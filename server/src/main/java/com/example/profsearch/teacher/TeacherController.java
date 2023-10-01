@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/teachers")
+//@CrossOrigin(origins = "http://localhost:5173")
 public class TeacherController {
 
     @Autowired
@@ -24,6 +25,7 @@ public class TeacherController {
     // Get a teacher by id
     @GetMapping("/{id}")
     public ResponseEntity<Teacher> getTeacherById(@PathVariable Long id) {
+        System.out.println("Fetching teacher with id " + id);
         Optional<Teacher> teacher = teacherService.findById(id);
         return teacher.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
