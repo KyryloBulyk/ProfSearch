@@ -9,5 +9,5 @@ export interface Teacher {
 	linkedinUrl: string | null;
 	instagramUrl: string | null;
 	description: string | null;
-	degree: string | null;
+	title: string | null;
 }

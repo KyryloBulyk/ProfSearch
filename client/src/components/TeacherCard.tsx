@@ -15,10 +15,13 @@ const TeacherCard = (props: Teacher) => {
 			<div className='flex flex-col w-11/12'>
 				<p className='text-lg'>{props.department}</p>
 				<h1 className='text-2xl font-medium'>
-					{props.degree} {props.name} {props.surname}
+					{props.title} {props.name} {props.surname}
 				</h1>
 				<p className='text-zinc-500 truncate pr-1'>{props.description}</p>
-				<Link to='/' className='bg-blue-500 text-white text-center text-sm p-1 rounded-lg w-40 mt-4'>
+				<Link
+					to={`/teachers/${props.teacherId}`}
+					className='bg-blue-500 text-white text-center text-sm p-1 rounded-lg w-40 mt-4'
+				>
 					{t('teacherCard.button')}
 				</Link>
 			</div>

@@ -14,7 +14,7 @@ export const teachers = [
 		contactEmail: 'some@gmail.com',
 		linkedinUrl: 'https://www.linkedin.com/',
 		instagramUrl: 'https://www.instagram.com/',
-		degree: 'doc. Ing.',
+		title: 'doc. Ing.',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.',
 	},
@@ -28,7 +28,7 @@ export const teachers = [
 		contactEmail: 'some@gmail.com',
 		linkedinUrl: 'https://www.linkedin.com/',
 		instagramUrl: 'https://www.instagram.com/',
-		degree: 'doc. Ing.',
+		title: 'doc. Ing.',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.',
 	},
@@ -42,7 +42,7 @@ export const teachers = [
 		contactEmail: 'some@gmail.com',
 		linkedinUrl: 'https://www.linkedin.com/',
 		instagramUrl: 'https://www.instagram.com/',
-		degree: 'doc. Ing.',
+		title: 'doc. Ing.',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.',
 	},
@@ -56,7 +56,7 @@ export const teachers = [
 		contactEmail: 'some@gmail.com',
 		linkedinUrl: 'https://www.linkedin.com/',
 		instagramUrl: 'https://www.instagram.com/',
-		degree: 'doc. Ing.',
+		title: 'doc. Ing.',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.',
 	},
@@ -70,7 +70,7 @@ export const teachers = [
 		contactEmail: 'some@gmail.com',
 		linkedinUrl: 'https://www.linkedin.com/',
 		instagramUrl: 'https://www.instagram.com/',
-		degree: 'doc. Ing.',
+		title: 'doc. Ing.',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.',
 	},

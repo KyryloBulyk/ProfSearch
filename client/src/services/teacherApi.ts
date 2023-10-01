@@ -6,7 +6,10 @@ export const teacherApi = api.injectEndpoints({
 		getTeachers: builder.query<Teacher[], void>({
 			query: () => '/teachers',
 		}),
+		getTeacher: builder.query<Teacher, string>({
+			query: (id) => `/teachers/${id}`,
+		}),
 	}),
 });
 
-export const { useGetTeachersQuery } = teacherApi;
+export const { useGetTeachersQuery, useGetTeacherQuery } = teacherApi;
