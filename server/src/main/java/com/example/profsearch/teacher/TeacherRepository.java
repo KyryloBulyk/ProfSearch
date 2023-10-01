@@ -1,4 +1,7 @@
 package com.example.profsearch.teacher;
 
-public interface TeacherRepository{
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TeacherRepository extends JpaRepository<Teacher, Long> {
+
 }
