@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/teacher")
+@CrossOrigin(origins = "http://localhost:5173")
+@RequestMapping(path = "api/v1/teachers")
 public class TeacherController {
     private final TeacherService teacherService;
 
