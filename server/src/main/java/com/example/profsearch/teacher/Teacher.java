@@ -1,57 +1,147 @@
 package com.example.profsearch.teacher;
 
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "teachers")
 public class Teacher {
+    @Id
+    @Column(name = "teacherid")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "photourl")
+    private String photoUrl;
+
+    @Column(name = "name")
     private String name;
-    private String email;
 
-    public Teacher() {
-    }
+    @Column(name = "surname")
+    private String surname;
 
-    public Teacher(Long id, String name, String email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-    }
+    @Column(name = "title")
+    private String title;
 
+    @Column(name = "location")
+    private String location;
 
-    public Teacher(String name, String email) {
-        this.name = name;
-        this.email = email;
-    }
+    @Column(name = "department")
+    private String department;
+
+    @Column(name = "contactemail")
+    private String contactEmail;
+
+    @Column(name = "linkedinurl")
+    private String linkedinUrl;
+
+    @Column(name = "instagramurl")
+    private String instagramUrl;
+
+    @Column(name = "description", length = 1000)
+    private String description;;
 
     public Long getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getContactEmail() {
+        return contactEmail;
+    }
+
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
+    }
+
+    public String getLinkedinUrl() {
+        return linkedinUrl;
+    }
+
+    public void setLinkedinUrl(String linkedinUrl) {
+        this.linkedinUrl = linkedinUrl;
+    }
+
+    public String getInstagramUrl() {
+        return instagramUrl;
+    }
+
+    public void setInstagramUrl(String instagramUrl) {
+        this.instagramUrl = instagramUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
     public String toString() {
         return "Teacher{" +
                 "id=" + id +
+                ", photoUrl='" + photoUrl + '\'' +
                 ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
+                ", surname='" + surname + '\'' +
+                ", title='" + title + '\'' +
+                ", location='" + location + '\'' +
+                ", department='" + department + '\'' +
+                ", contactEmail='" + contactEmail + '\'' +
+                ", linkedinUrl='" + linkedinUrl + '\'' +
+                ", instagramUrl='" + instagramUrl + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

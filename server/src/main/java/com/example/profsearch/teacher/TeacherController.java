@@ -6,22 +6,29 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/teacher")
+@RequestMapping("/api/teachers")
 public class TeacherController {
-    private final TeacherService teacherService;
 
     @Autowired
-    public TeacherController(TeacherService teacherService) {
-        this.teacherService = teacherService;
-    }
+    private TeacherService teacherService;
 
+    // Get all teachers
     @GetMapping
-    public List<Teacher> getTeachers() {
-        return teacherService.getTeachers();
+    public List<Teacher> getAllTeachers() {
+        return teacherService.findAll();
     }
 
+    // Get a teacher by id
+    @GetMapping("/{id}")
+    public ResponseEntity<Teacher> getTeacherById(@PathVariable Long id) {
+        Optional<Teacher> teacher = teacherService.findById(id);
+        return teacher.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    }
+
+    // Create a new teacher
     @PostMapping
-    public void registerTeacher(@RequestBody Teacher teacher) {
-        teacherService.addTeacher(teacher);
+    public ResponseEntity<Teacher> createTeacher(@RequestBody Teacher teacher) {
+        Teacher savedTeacher = teacherService.save(teacher);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedTeacher);
     }
 }
