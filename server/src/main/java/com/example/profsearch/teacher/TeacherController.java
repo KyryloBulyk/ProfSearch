@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/teachers")
-//@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:5173")
 public class TeacherController {
 
     @Autowired
@@ -36,4 +36,38 @@ public class TeacherController {
         Teacher savedTeacher = teacherService.save(teacher);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedTeacher);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Teacher> updateTeacher(@PathVariable Long id, @RequestBody Teacher teacherDetails) {
+        Optional<Teacher> optionalTeacher = teacherService.findById(id);
+        if(optionalTeacher.isPresent()) {
+            Teacher teacher = optionalTeacher.get();
+            teacher.setName(teacherDetails.getName());
+            teacher.setPhotoUrl(teacherDetails.getPhotoUrl());
+            teacher.setSurname(teacherDetails.getSurname());
+            teacher.setTitle(teacherDetails.getTitle());
+            teacher.setLocation(teacherDetails.getLocation());
+            teacher.setDepartment(teacherDetails.getDepartment());
+            teacher.setContactEmail(teacherDetails.getContactEmail());
+            teacher.setLinkedinUrl(teacherDetails.getLinkedinUrl());
+            teacher.setInstagramUrl(teacherDetails.getInstagramUrl());
+            teacher.setDescription(teacherDetails.getDescription());
+            Teacher updatedTeacher = teacherService.save(teacher);
+            return ResponseEntity.ok(updatedTeacher);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTeacher(@PathVariable Long id) {
+        Optional<Teacher> optionalTeacher = teacherService.findById(id);
+        if (optionalTeacher.isPresent()) {
+            teacherService.delete(optionalTeacher.get());
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
 }
