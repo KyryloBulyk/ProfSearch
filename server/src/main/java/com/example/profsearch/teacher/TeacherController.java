@@ -1,5 +1,7 @@
 package com.example.profsearch.teacher;
 
+import com.example.profsearch.comment.Comment;
+import com.example.profsearch.comment.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -67,6 +69,23 @@ public class TeacherController {
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    //Comments
+    @Autowired
+    private CommentService commentService;
+
+    @PostMapping("/{teacherId}/comments")
+    public ResponseEntity<Comment> addCommentToTeacher(@PathVariable Long teacherId, @RequestBody Comment comment) {
+        System.out.println("Received comment: " + comment);
+        try {
+            Comment savedComment = commentService.saveCommentForTeacher(teacherId, comment);
+            System.out.println("Saved comment: " + savedComment);
+            return ResponseEntity.status(HttpStatus.CREATED).body(savedComment);
+        } catch (RuntimeException e) {
+            System.out.println("Error: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
 

@@ -1,10 +1,14 @@
 package com.example.profsearch.teacher;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class TeacherService {
@@ -30,4 +34,7 @@ public class TeacherService {
     public void delete(Teacher teacher) {
         teacherRepository.delete(teacher);
     }
+
+//    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<Comment> comments = new ArrayList<>();
 }

@@ -1,6 +1,11 @@
 package com.example.profsearch.teacher;
 
+import com.example.profsearch.comment.Comment;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "teachers")
@@ -38,7 +43,19 @@ public class Teacher {
     private String instagramUrl;
 
     @Column(name = "description", length = 1000)
-    private String description;;
+    private String description;
+
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private Set<Comment> comments;
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
 
     public Long getId() {
         return id;
