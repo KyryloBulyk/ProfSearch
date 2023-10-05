@@ -11,3 +11,15 @@ export interface Teacher {
 	description: string | null;
 	title: string | null;
 }
+
+export interface SerializedError {
+	name?: string;
+	message?: string;
+	stack?: string;
+	code?: string;
+}
+
+export interface SortOption {
+	value: string;
+	label: string;
+}
