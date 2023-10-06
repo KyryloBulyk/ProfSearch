@@ -1,9 +1,6 @@
-export const sortOptions = [
-	{ value: 'alphabet', label: 'Alphabet' },
-	{ value: 'rating', label: 'Rating' },
-];
+import { Teacher } from './types';
 
-export const teachersData = [
+export const teachersData: Teacher[] = [
 	{
 		teacherId: 1,
 		photoUrl: 'https://i.imgur.com/5QxXb2o.png',

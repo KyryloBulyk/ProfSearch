@@ -1,24 +1,41 @@
 import { useTranslation } from 'react-i18next';
 import TeacherList from '../components/TeacherList';
 import { useEffect, useState } from 'react';
-// import { teachersData } from '../utils';
+import { teachersData } from '../utils';
 import BounceLoader from 'react-spinners/BounceLoader';
-import { useGetTeachersQuery } from '../services/teacherApi';
 import Fuse from 'fuse.js';
-import Select from 'react-select';
+import Select, { SingleValue } from 'react-select';
 import { fuseOptions } from '../utils';
-import { Teacher, SortOption } from '../types';
+import { Teacher } from '../types';
+import axios from 'axios';
+
+type OptionType = {
+	value: string;
+	label: string;
+};
 
 const SearchPage = () => {
 	const { t } = useTranslation();
-	const { data, error } = useGetTeachersQuery();
-	const [teachers, setTeachers] = useState<Teacher[]>([]);
+	const [teachers, setTeachers] = useState<Teacher[]>(teachersData);
 	const [search, setSearch] = useState('');
 	const [sorting, setSorting] = useState('');
+	const [error, setError] = useState(false);
 
-	const sortOptions = [
-		{ value: 'alphabet', label: t('teacherList.filterValues.alphabet') },
-		{ value: 'rating', label: t('teacherList.filterValues.rating') },
+	// useEffect(() => {
+	// 	const fetchTeachers = async () => {
+	// 		try {
+	// 			const { data } = await axios.get('/api/teachers');
+	// 			setTeachers(data);
+	// 		} catch (error) {
+	// 			setError(true);
+	// 		}
+	// 	};
+	// 	fetchTeachers();
+	// }, []);
+
+	const sortOptions: OptionType[] = [
+		{ value: t('teacherList.filterValues.alphabet'), label: t('teacherList.filterValues.alphabet') },
+		{ value: t('teacherList.filterValues.rating'), label: t('teacherList.filterValues.rating') },
 	];
 
 	const handleSearch = () => {
@@ -29,14 +46,15 @@ const SearchPage = () => {
 		setTeachers([...finalResult]);
 	};
 
-	const handleSort = (selectedOption: SortOption) => {
+	const handleSort = (selectedOption: SingleValue<OptionType>) => {
+		if (!selectedOption) return;
 		setSorting(selectedOption.value);
 		if (selectedOption.value === 'alphabet') {
 			const sortedTeachers = [...teachers].sort((a, b) => {
-				if (a.name < b.name) {
+				if (a.surname < b.surname) {
 					return -1;
 				}
-				if (a.name > b.name) {
+				if (a.surname > b.surname) {
 					return 1;
 				}
 				return 0;
@@ -44,12 +62,6 @@ const SearchPage = () => {
 			setTeachers(sortedTeachers);
 		}
 	};
-
-	useEffect(() => {
-		if (data) {
-			setTeachers(data);
-		}
-	}, [data]);
 
 	return (
 		<div>
@@ -62,7 +74,7 @@ const SearchPage = () => {
 				<div className='flex pt-10'>
 					<input
 						type='text'
-						className='rounded-l-lg border border-zinc-300 p-4 text-base w-full focus:outline-blue-500 -mr-1'
+						className='rounded-l-lg border border-zinc-300 p-4 text-base w-full focus:outline-blue-500 -mr-1 duration-100'
 						placeholder={t('header.inputPlaceholder')}
 						value={search}
 						onChange={(e) => setSearch(e.target.value)}
@@ -85,8 +97,10 @@ const SearchPage = () => {
 								placeholder={t('teacherList.filter')}
 								options={sortOptions}
 								className='w-52'
-								value={sorting}
-								onChange={handleSort}
+								value={sorting ? { value: sorting, label: sorting } : undefined}
+								onChange={(selectedOption: SingleValue<OptionType>) =>
+									handleSort(selectedOption as OptionType)
+								}
 							/>
 						</div>
 						<TeacherList teachers={teachers} error={error} />
