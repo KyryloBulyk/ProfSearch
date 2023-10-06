@@ -20,7 +20,7 @@ const SearchPage = () => {
 	const [search, setSearch] = useState('');
 	const [sorting, setSorting] = useState('');
 	const [error, setError] = useState(false);
-
+	// TODO - fetch teachers
 	// useEffect(() => {
 	// 	const fetchTeachers = async () => {
 	// 		try {
