@@ -1,0 +1,20 @@
+{
+	"header": {
+		"title": "Nájdite si vhodného učiteľa",
+		"subtitle": "Naša platforma vám pomôže nájsť správneho učiteľa na dosiahnutie vašich študijných a osobných cieľov.",
+		"inputPlaceholder": "Akého učiteľa hľadáte?",
+		"button": "Hľadať učiteľa"
+	},
+	"teacherList": {
+		"errorMessage": "Učitelia neboli nájdení",
+		"teachers": "Učitelia",
+		"filter": "Filter podľa",
+		"filterValues": {
+			"alphabet": "Abecedy",
+			"rating": "Hodnotenia"
+		}
+	},
+	"teacherCard": {
+		"button": "Zobraziť viac"
+	}
+}
