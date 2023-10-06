@@ -89,4 +89,26 @@ public class TeacherController {
         }
     }
 
+    @PutMapping("/comments/{commentId}")
+    public ResponseEntity<Comment> updateComment(@PathVariable Long commentId, @RequestBody Comment comment) {
+        try {
+            Comment newComment = commentService.updateComment(commentId, comment);
+            System.out.println("Updated comment: " + newComment);
+            return ResponseEntity.status(HttpStatus.CREATED).body(newComment);
+        } catch (RuntimeException e) {
+            System.out.println("Error: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+    }
+
+    @DeleteMapping("/comments/{commentId}")
+    public ResponseEntity<Void> deleteComment(@PathVariable Long commentId) {
+        try {
+            commentService.deleteComment(commentId);
+            return ResponseEntity.ok().build();
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
 }

@@ -1,7 +1,6 @@
 package com.example.profsearch.teacher;
 
 import com.example.profsearch.comment.Comment;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 

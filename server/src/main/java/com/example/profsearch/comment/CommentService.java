@@ -17,6 +17,10 @@ public class CommentService {
     @Autowired
     private TeacherRepository teacherRepository;
 
+    public Optional<Comment> findById(Long id) {
+        return commentRepository.findById(id);
+    }
+
     public Comment saveCommentForTeacher(Long teacherId, Comment comment) {
         Optional<Teacher> teacherOpt = teacherRepository.findById(teacherId);
         if (teacherOpt.isPresent()) {
@@ -27,4 +31,29 @@ public class CommentService {
         throw new RuntimeException("Teacher not found for id " + teacherId);
     }
 
+    public void deleteComment(Long commentId) {
+        if (commentRepository.existsById(commentId)) {
+            commentRepository.deleteById(commentId);
+        } else {
+            throw new RuntimeException("Comment with ID " + commentId + " not found.");
+        }
+    }
+
+    public Comment updateComment(Long id, Comment updatedComment) {
+        Optional<Comment> optionalComment = commentRepository.findById(id);
+        if(optionalComment.isPresent()) {
+            Comment newComment = optionalComment.get();
+            newComment.setCommentText(updatedComment.getCommentText());
+            newComment.setAuthor(updatedComment.getAuthor());
+            newComment.setDate(updatedComment.getDate());
+
+            if (updatedComment.getTeacher() != null) {
+                newComment.setTeacher(updatedComment.getTeacher());
+            }
+
+            return commentRepository.save(newComment);
+        } else {
+            throw new RuntimeException("Comment not found for id " + id);
+        }
+    }
 }
