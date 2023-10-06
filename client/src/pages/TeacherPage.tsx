@@ -13,7 +13,7 @@ const TeacherPage = () => {
 	const { t } = useTranslation();
 	const [teacher, setTeacher] = useState<Teacher>(teachersData[0]);
 	const { fetching } = useFetching(async () => {
-		const { data } = await axios.get(`/api/teachers/${id}`);
+		const { data } = await axios.get(`http://147.232.182.160:8080/api/teachers/${id}`);
 		setTeacher(data);
 	});
 	// TODO - fetch teacher by id
@@ -24,7 +24,7 @@ const TeacherPage = () => {
 	return (
 		<div className='py-24 max-w-7xl my-0 mx-auto flex'>
 			<div className='flex flex-col md:flex-row gap-10'>
-				<div>
+				<div className='w-52 h-full'>
 					{teacher.photoUrl && <img src={teacher.photoUrl} alt={teacher.surname} className='rounded-md' />}
 				</div>
 				<table className='text-left text-xl'>

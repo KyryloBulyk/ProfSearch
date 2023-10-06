@@ -19,10 +19,10 @@ const SearchPage = () => {
 	const { t } = useTranslation();
 	const [teachers, setTeachers] = useState<Teacher[]>(teachersData);
 	const [search, setSearch] = useState('');
-	const [sorting, setSorting] = useState('');
+	const [sorting, setSorting] = useState<OptionType>();
 	const lastElementRef = useRef(null);
 	const { fetching, error } = useFetching(async () => {
-		const { data } = await axios.get('/api/teachers');
+		const { data } = await axios.get('http://147.232.182.160:8080/api/teachers');
 		setTeachers(data);
 	});
 
@@ -31,13 +31,10 @@ const SearchPage = () => {
 	// 	fetching();
 	// }, []);
 
-	useEffect(() => {}, []);
-
 	// useObserver();
-
 	const sortOptions: OptionType[] = [
-		{ value: t('teacherList.filterValues.alphabet'), label: t('teacherList.filterValues.alphabet') },
-		{ value: t('teacherList.filterValues.rating'), label: t('teacherList.filterValues.rating') },
+		{ value: 'alphabet', label: t('teacherList.filterValues.alphabet') },
+		{ value: 'rating', label: t('teacherList.filterValues.rating') },
 	];
 
 	const handleSearch = () => {
@@ -50,7 +47,7 @@ const SearchPage = () => {
 
 	const handleSort = (selectedOption: SingleValue<OptionType>) => {
 		if (!selectedOption) return;
-		setSorting(selectedOption.value);
+		setSorting(selectedOption);
 		if (selectedOption.value === 'alphabet') {
 			const sortedTeachers = [...teachers].sort((a, b) => {
 				if (a.surname < b.surname) {
@@ -99,7 +96,7 @@ const SearchPage = () => {
 								placeholder={t('teacherList.filter')}
 								options={sortOptions}
 								className='w-52'
-								value={sorting ? { value: sorting, label: sorting } : undefined}
+								value={sorting}
 								onChange={(selectedOption: SingleValue<OptionType>) =>
 									handleSort(selectedOption as OptionType)
 								}

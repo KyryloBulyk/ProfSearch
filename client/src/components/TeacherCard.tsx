@@ -8,7 +8,7 @@ const TeacherCard = (props: Teacher) => {
 	return (
 		<div className='flex gap-6 bg-white p-6 rounded-lg'>
 			<img
-				src='https://kpi.fei.tuke.sk/sites/www.kpi.fei.tuke.sk/files/pictures/picture-26-1613466875.jpg'
+				src={props.photoUrl ? props.photoUrl : 'https://via.placeholder.com/150'}
 				alt='avatar'
 				className='max-h-24 max-w-2max-h-24 rounded-sm'
 			/>
