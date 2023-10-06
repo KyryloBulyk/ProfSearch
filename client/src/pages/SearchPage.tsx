@@ -2,7 +2,7 @@ import axios from 'axios';
 import Fuse from 'fuse.js';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useRef, useState } from 'react';
-import { useObserver } from '../hooks/useObserver';
+// import { useObserver } from '../hooks/useObserver';
 import { useFetching } from '../hooks/useFetching';
 import Select, { SingleValue } from 'react-select';
 import BounceLoader from 'react-spinners/BounceLoader';
