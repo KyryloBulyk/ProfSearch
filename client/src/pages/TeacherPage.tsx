@@ -38,7 +38,7 @@ const TeacherPage = () => {
             <p className="pl-[20px] py-5">{teacher.contactEmail}</p>
           </tr>
           <tr>
-            <th className="py-5">Contact:</th>
+            <th className="py-5">Kontakt:</th>
             <div className="pl-[20px] flex gap-5 py-5">
               <a href={teacher.linkedinUrl} className="w-[30px] h-[30px]">
                 <AiFillLinkedin className="w-full h-full"/>
