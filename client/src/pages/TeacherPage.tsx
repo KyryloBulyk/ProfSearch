@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { useFetching } from '../hooks/useFetching';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Teacher } from '../types';
@@ -6,19 +7,14 @@ import { Teacher } from '../types';
 const TeacherPage = () => {
 	const { id } = useParams();
 	const [teacher, setTeacher] = useState<Teacher>();
-	const [error, setError] = useState(false);
+	const { fetching } = useFetching(async () => {
+		const { data } = await axios.get(`/api/teachers/${id}`);
+		setTeacher(data);
+	});
 	// TODO - fetch teacher by id
-	useEffect(() => {
-		const fetchTeacher = async () => {
-			try {
-				const { data } = await axios.get(`/api/teachers/${id}`);
-				setTeacher(data);
-			} catch (error) {
-				setError(true);
-			}
-		};
-		fetchTeacher();
-	}, []);
+	// useEffect(() => {
+	// 	fetching();
+	// }, []);
 
 	return <div>TeacherPage</div>;
 };

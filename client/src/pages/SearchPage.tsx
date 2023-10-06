@@ -1,13 +1,14 @@
-import { useTranslation } from 'react-i18next';
-import TeacherList from '../components/TeacherList';
-import { useEffect, useState } from 'react';
-import { teachersData } from '../utils';
-import BounceLoader from 'react-spinners/BounceLoader';
-import Fuse from 'fuse.js';
-import Select, { SingleValue } from 'react-select';
-import { fuseOptions } from '../utils';
-import { Teacher } from '../types';
 import axios from 'axios';
+import Fuse from 'fuse.js';
+import { useTranslation } from 'react-i18next';
+import { useEffect, useRef, useState } from 'react';
+// import { useObserver } from '../hooks/useObserver';
+import { useFetching } from '../hooks/useFetching';
+import Select, { SingleValue } from 'react-select';
+import BounceLoader from 'react-spinners/BounceLoader';
+import TeacherList from '../components/TeacherList';
+import { teachersData, fuseOptions } from '../utils';
+import { Teacher } from '../types';
 
 type OptionType = {
 	value: string;
@@ -19,19 +20,20 @@ const SearchPage = () => {
 	const [teachers, setTeachers] = useState<Teacher[]>(teachersData);
 	const [search, setSearch] = useState('');
 	const [sorting, setSorting] = useState('');
-	const [error, setError] = useState(false);
+	const lastElementRef = useRef(null);
+	const { fetching, error } = useFetching(async () => {
+		const { data } = await axios.get('/api/teachers');
+		setTeachers(data);
+	});
+
 	// TODO - fetch teachers
 	// useEffect(() => {
-	// 	const fetchTeachers = async () => {
-	// 		try {
-	// 			const { data } = await axios.get('/api/teachers');
-	// 			setTeachers(data);
-	// 		} catch (error) {
-	// 			setError(true);
-	// 		}
-	// 	};
-	// 	fetchTeachers();
+	// 	fetching();
 	// }, []);
+
+	useEffect(() => {}, []);
+
+	// useObserver();
 
 	const sortOptions: OptionType[] = [
 		{ value: t('teacherList.filterValues.alphabet'), label: t('teacherList.filterValues.alphabet') },
@@ -104,6 +106,7 @@ const SearchPage = () => {
 							/>
 						</div>
 						<TeacherList teachers={teachers} error={error} />
+						<div className='h-5' ref={lastElementRef}></div>
 					</div>
 				)}
 			</div>
