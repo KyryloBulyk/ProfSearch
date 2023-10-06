@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import TeacherCard from './TeacherCard';
-import { Teacher, SerializedError } from '../types';
+import { Teacher } from '../types';
 
 interface TeacherListProps {
 	teachers: Teacher[];
-	error: SerializedError | any;
+	error: boolean;
 }
 
 const TeacherList = ({ teachers, error }: TeacherListProps) => {
