@@ -3,7 +3,7 @@ import { Teacher } from './types';
 export const teachersData: Teacher[] = [
 	{
 		teacherId: 1,
-		photoUrl: 'https://i.imgur.com/5QxXb2o.png',
+		photoUrl: 'https://kpi.fei.tuke.sk/sites/www.kpi.fei.tuke.sk/files/pictures/picture-26-1613466875.jpg',
 		name: 'John',
 		surname: 'Doe',
 		location: 'London',

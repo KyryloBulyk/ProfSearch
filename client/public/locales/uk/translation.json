@@ -16,5 +16,12 @@
 	},
 	"teacherCard": {
 		"button": "Дізнатися більше"
+	},
+	"teacherPage": {
+		"name": "Ім'я",
+		"department": "Кафедра",
+		"mail": "Пошта",
+		"contacts": "Контакти",
+		"about": "Опис"
 	}
 }

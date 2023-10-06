@@ -16,5 +16,12 @@
 	},
 	"teacherCard": {
 		"button": "Zobraziť viac"
+	},
+	"teacherPage": {
+		"name": "Meno",
+		"department": "Oddelenie",
+		"mail": "E-mail",
+		"contacts": "Kontakty",
+		"about": "Opis"
 	}
 }
