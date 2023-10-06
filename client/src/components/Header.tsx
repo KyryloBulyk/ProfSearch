@@ -8,10 +8,10 @@ const Header = () => {
 	};
 
 	return (
-		<div className='flex justify-between max-w-7xl my-0 mx-auto pt-2'>
+		<div className='flex justify-between max-w-7xl my-0 mx-auto pt-4'>
 			<div>
 				<Link to='/'>
-					<img src='img/capture.png' alt='logo' className='h-16' />
+					<img src='/img/capture.png' alt='logo' className='h-16' />
 				</Link>
 			</div>
 			<div className='flex gap-2 items-center -mt-3'>
