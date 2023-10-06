@@ -15,16 +15,26 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:5173")
 public class TeacherController {
 
+    //----------------------------------
+    //Connecting with Service
+    //----------------------------------
+
     @Autowired
     private TeacherService teacherService;
 
-    // Get all teachers
+    //----------------------------------
+    // Processing a GET request to get a list of all teachers
+    //----------------------------------
+
     @GetMapping
     public List<Teacher> getAllTeachers() {
         return teacherService.findAll();
     }
 
-    // Get a teacher by id
+    //----------------------------------
+    // Processing a GET request to get a Teacher by Id
+    //----------------------------------
+
     @GetMapping("/{id}")
     public ResponseEntity<Teacher> getTeacherById(@PathVariable Long id) {
         System.out.println("Fetching teacher with id " + id);
@@ -32,12 +42,19 @@ public class TeacherController {
         return teacher.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    // Create a new teacher
+    //----------------------------------
+    // Create a Teacher and add it to the Database
+    //----------------------------------
+
     @PostMapping
     public ResponseEntity<Teacher> createTeacher(@RequestBody Teacher teacher) {
         Teacher savedTeacher = teacherService.save(teacher);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedTeacher);
     }
+
+    //----------------------------------
+    //Update teacher data
+    //----------------------------------
 
     @PutMapping("/{id}")
     public ResponseEntity<Teacher> updateTeacher(@PathVariable Long id, @RequestBody Teacher teacherDetails) {
@@ -61,6 +78,11 @@ public class TeacherController {
         }
     }
 
+
+    //----------------------------------
+    //Deleting Teacher by Id
+    //----------------------------------
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTeacher(@PathVariable Long id) {
         Optional<Teacher> optionalTeacher = teacherService.findById(id);
@@ -72,9 +94,18 @@ public class TeacherController {
         }
     }
 
+
+    //----------------------------------
     //Comments
+    //----------------------------------
+
     @Autowired
     private CommentService commentService;
+
+
+    //----------------------------------
+    //Add a comment to a teacher
+    //----------------------------------
 
     @PostMapping("/{teacherId}/comments")
     public ResponseEntity<Comment> addCommentToTeacher(@PathVariable Long teacherId, @RequestBody Comment comment) {
@@ -89,6 +120,10 @@ public class TeacherController {
         }
     }
 
+    //----------------------------------
+    //Update comment
+    //----------------------------------
+
     @PutMapping("/comments/{commentId}")
     public ResponseEntity<Comment> updateComment(@PathVariable Long commentId, @RequestBody Comment comment) {
         try {
@@ -100,6 +135,10 @@ public class TeacherController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
+
+    //----------------------------------
+    //Deleting a comment using Id
+    //----------------------------------
 
     @DeleteMapping("/comments/{commentId}")
     public ResponseEntity<Void> deleteComment(@PathVariable Long commentId) {

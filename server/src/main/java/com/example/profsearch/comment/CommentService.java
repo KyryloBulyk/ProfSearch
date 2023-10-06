@@ -5,21 +5,38 @@ import com.example.profsearch.teacher.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CommentService {
+
+    //----------------------------------
+    //Connecting Repository to Service
+    //----------------------------------
+
     @Autowired
     private CommentRepository commentRepository;
+
+
+    //----------------------------------
+    //Connecting with Service
+    //----------------------------------
 
     @Autowired
     private TeacherRepository teacherRepository;
 
+    //----------------------------------
+    //Search for a comment by Id
+    //----------------------------------
+
     public Optional<Comment> findById(Long id) {
         return commentRepository.findById(id);
     }
+
+
+    //----------------------------------
+    //Storing comments for the teacher
+    //----------------------------------
 
     public Comment saveCommentForTeacher(Long teacherId, Comment comment) {
         Optional<Teacher> teacherOpt = teacherRepository.findById(teacherId);
@@ -31,6 +48,10 @@ public class CommentService {
         throw new RuntimeException("Teacher not found for id " + teacherId);
     }
 
+    //----------------------------------
+    //Deleting Comment by Id
+    //----------------------------------
+
     public void deleteComment(Long commentId) {
         if (commentRepository.existsById(commentId)) {
             commentRepository.deleteById(commentId);
@@ -38,6 +59,11 @@ public class CommentService {
             throw new RuntimeException("Comment with ID " + commentId + " not found.");
         }
     }
+
+
+    //----------------------------------
+    //Updating Comment by Id
+    //----------------------------------
 
     public Comment updateComment(Long id, Comment updatedComment) {
         Optional<Comment> optionalComment = commentRepository.findById(id);

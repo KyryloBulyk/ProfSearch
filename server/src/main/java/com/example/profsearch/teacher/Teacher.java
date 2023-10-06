@@ -9,44 +9,65 @@ import java.util.Set;
 @Entity
 @Table(name = "teachers")
 public class Teacher {
+
+    //----------------------------------
+    // Create fields
+    //----------------------------------
+
     @Id
     @Column(name = "teacherid")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    //Photo for the Teacher in URL form
     @Column(name = "photourl")
     private String photoUrl;
 
+    //Name
     @Column(name = "name")
     private String name;
 
+    //Surname
     @Column(name = "surname")
     private String surname;
 
+    //Title
     @Column(name = "title")
     private String title;
 
+    //Location
     @Column(name = "location")
     private String location;
 
+    //Department
     @Column(name = "department")
     private String department;
 
+    //Email
     @Column(name = "contactemail")
     private String contactEmail;
 
+    //LinkedIn
     @Column(name = "linkedinurl")
     private String linkedinUrl;
 
+    //Instagram
     @Column(name = "instagramurl")
     private String instagramUrl;
 
+    //Description
     @Column(name = "description", length = 1000)
     private String description;
 
+    //Connection between Tables "Teachers" and "Comments" in PostgresSQL
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private Set<Comment> comments;
+
+
+    //----------------------------------
+    //Setters and getters for fields
+    //----------------------------------
 
     public Set<Comment> getComments() {
         return comments;

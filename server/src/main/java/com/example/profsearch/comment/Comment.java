@@ -10,24 +10,39 @@ import java.util.Date;
 @Table(name = "Comments")
 public class Comment {
 
+    //----------------------------------
+    // Create fields
+    //----------------------------------
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "commentid")
     private Long id;
 
+    //----------------------------------
+    //Many-to-One relationship with the Teachers table
+    //----------------------------------
     @ManyToOne
     @JoinColumn(name="teacherid", referencedColumnName = "teacherid")
     @JsonBackReference
     private Teacher teacher;
 
+    //Text for Comment
     @Column(name = "commenttext")
     private String commentText;
 
+    //Date of Comment
     @Column(name = "date")
     private Date date;
 
+    //Author for Comment
     @Column(name = "author")
     private String author;
+
+
+    //----------------------------------
+    //Setters and getters
+    //----------------------------------
 
     public String getAuthor() {
         return author;
