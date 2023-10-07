@@ -13,6 +13,7 @@ export interface Teacher {
 	description: string | null;
 	title: string | null;
 	subjects: string[];
+	comments: Comment[];
 }
 
 export interface SerializedError {
@@ -25,4 +26,9 @@ export interface SerializedError {
 export interface SortOption {
 	value: string;
 	label: string;
+}
+
+export interface Comment {
+	author: string;
+	content: string;
 }

@@ -20,6 +20,13 @@ export const teachersData: Teacher[] = [
 		title: 'doc. Ing.',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.',
+		comments: [
+			{
+				author: 'John',
+				content:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.',
+			},
+		],
 	},
 	{
 		teacherId: 2,
@@ -40,6 +47,13 @@ export const teachersData: Teacher[] = [
 		title: 'doc.',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.',
+		comments: [
+			{
+				author: 'John',
+				content:
+					'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.',
+			},
+		],
 	},
 ];
 
