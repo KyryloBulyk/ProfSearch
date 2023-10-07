@@ -1,10 +1,15 @@
 export interface Teacher {
 	teacherId: number;
 	photoUrl: string | null;
+	classification: string;
 	name: string;
 	surname: string;
+	building: string | null;
+	room: string | null;
+	subjects: Array<string> | null;
 	location: string | null;
 	department: string | null;
+	contact: string | null;
 	contactEmail: string | null;
 	linkedinUrl: string | null;
 	instagramUrl: string | null;
