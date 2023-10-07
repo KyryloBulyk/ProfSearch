@@ -7,7 +7,7 @@
 	},
 	"teacherList": {
 		"errorMessage": "Вчителі не знайдені",
-		"teachers": "Вчителі",
+		"teachers": "вчителі",
 		"filter": "Фільтр за",
 		"filterValues": {
 			"alphabet": "Алфавітом",
@@ -25,10 +25,21 @@
 		"about": "Опис",
 		"building": "Будівля",
 		"room": "Кабінет",
-		"subjects": "Предмети"
+		"subjects": "Предмети",
+		"comments": "Коментарі",
+		"comment": {
+			"placeholder": "Ваш коментар",
+			"button": "Залишити коментар"
+		}
 	},
 	"progressBar": {
 		"header": "Тиждень семестру",
 		"week": "тиждень"
+	},
+	"commentForm": {
+		"name": "Напишіть своє ім'я",
+		"context": "Напишіть свій коментар",
+		"add": "Залишити коментар",
+		"cancel": "Відмінити"
 	}
 }

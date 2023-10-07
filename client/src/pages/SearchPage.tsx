@@ -6,7 +6,7 @@ import { useFetching } from '../hooks/useFetching';
 import Select, { SingleValue } from 'react-select';
 import BounceLoader from 'react-spinners/BounceLoader';
 import TeacherList from '../components/TeacherList';
-import { teachersData, fuseOptions } from '../utils';
+import { fuseOptions, teachersData } from '../utils';
 import { Teacher } from '../types';
 import api from '../api/teachers';
 
@@ -46,7 +46,7 @@ const SearchPage = () => {
 	};
 
 	const handleSort = (selectedOption: SingleValue<OptionType>) => {
-		if (!selectedOption) return;
+		if (!selectedOption || !teachers) return;
 		setSorting(selectedOption);
 		if (selectedOption.value === 'alphabet') {
 			const sortedTeachers = [...teachers].sort((a, b) => {
