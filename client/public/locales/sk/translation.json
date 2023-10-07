@@ -20,9 +20,13 @@
 	"teacherPage": {
 		"name": "Meno",
 		"department": "Oddelenie",
+		"classification": "Zaradenie",
 		"mail": "E-mail",
-		"contacts": "Kontakty",
-		"about": "Opis"
+		"contacts": "Kontakt",
+		"about": "Opis",
+		"building": "Budova",
+		"room": "Miestnosť",
+		"subjects": "Predmety"
 	},
 	"progressBar": {
 		"header": "Týždeň semestra",
