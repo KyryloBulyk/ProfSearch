@@ -7,6 +7,11 @@ export const teachers = [
 	{
 		teacherId: 1,
 		photoUrl: 'https://kpi.fei.tuke.sk/sites/www.kpi.fei.tuke.sk/files/pictures/picture-26-1613466875.jpg',
+		classification: 'Profesor',
+		building: 'Letná 9',
+		room: 'B504',
+		subjects: ['doménovo špecifické jazyky','inžinierstvo počítačových jazykov','architektúry softvérových systémov', 'moderné používateľské rozhrania'],
+		contact: '+421 55 6022577',
 		name: 'John',
 		surname: 'Doe',
 		location: 'London',
