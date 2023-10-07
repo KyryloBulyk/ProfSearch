@@ -23,5 +23,9 @@
 		"mail": "E-mail",
 		"contacts": "Kontakty",
 		"about": "Opis"
+	},
+	"progressBar": {
+		"header": "Týždeň semestra",
+		"week": "týždeň"
 	}
 }
