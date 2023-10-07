@@ -103,6 +103,7 @@ const TeacherPage = () => {
         <h2 className="text-5xl font-medium">Hodnotenie</h2>
         <Rating />
       </div>
+      
     </div>
   );
 };
