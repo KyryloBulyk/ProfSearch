@@ -1,4 +1,4 @@
-// DO NOT MODIFY THIS FILE
+// DO NOT MODIFY EXISTING TYPES
 
 export interface Teacher {
 	teacherId: number;

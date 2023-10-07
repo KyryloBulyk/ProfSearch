@@ -3,17 +3,17 @@ import { useFetching } from '../hooks/useFetching';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineInstagram, AiFillLinkedin } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Teacher } from '../types';
 import { teachersData } from '../utils';
+import api from '../api/teachers';
 
 const TeacherPage = () => {
 	const { id } = useParams();
 	const { t } = useTranslation();
 	const [teacher, setTeacher] = useState<Teacher>(teachersData[0]);
 	const { fetching } = useFetching(async () => {
-		const { data } = await axios.get(`http://147.232.182.160:8080/api/teachers/${id}`);
+		const { data } = await api.get(`/teachers/${id}`);
 		setTeacher(data);
 	});
 	// TODO - fetch teacher by id
@@ -32,7 +32,7 @@ const TeacherPage = () => {
 				<table className='text-left text-xl'>
 					<tbody>
 						<tr>
-							<th className=''>{t('teacherPage.name')}:</th>
+							<th>{t('teacherPage.name')}:</th>
 							<td className='pl-5 '>
 								{teacher.title} {teacher.name} {teacher.surname}
 							</td>
@@ -40,6 +40,14 @@ const TeacherPage = () => {
 						<tr>
 							<th className='pt-5'>{t('teacherPage.department')}:</th>
 							<td className='pl-5 pt-5'>{teacher.department}</td>
+						</tr>
+						<tr>
+							<th className='pt-5'>{t('teacherPage.building')}:</th>
+							<td className='pl-5 pt-5'>{teacher.location}</td>
+						</tr>
+						<tr>
+							<th className='pt-5'>{t('teacherPage.room')}:</th>
+							<td className='pl-5 pt-5'>{teacher.location}</td>
 						</tr>
 						<tr>
 							<th className='pt-5'>{t('teacherPage.mail')}:</th>
@@ -58,6 +66,17 @@ const TeacherPage = () => {
 										<AiOutlineInstagram className='w-full h-full' />
 									</Link>
 								)}
+							</td>
+						</tr>
+						<tr>
+							<th className='pt-5 align-top'>{t('teacherPage.subjects')}:</th>
+							<td className='pl-5 pt-5'>
+								{teacher.subjects.map((subject, index) => (
+									<span key={index}>
+										{subject}
+										{index !== teacher.subjects.length - 1 ? ',' : '.'}{' '}
+									</span>
+								))}
 							</td>
 						</tr>
 						<tr>

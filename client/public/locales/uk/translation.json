@@ -22,7 +22,10 @@
 		"department": "Кафедра",
 		"mail": "Пошта",
 		"contacts": "Контакти",
-		"about": "Опис"
+		"about": "Опис",
+		"building": "Будівля",
+		"room": "Кабінет",
+		"subjects": "Предмети"
 	},
 	"progressBar": {
 		"header": "Тиждень семестру",

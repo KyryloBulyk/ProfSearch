@@ -20,7 +20,6 @@
 	"teacherPage": {
 		"name": "Meno",
 		"department": "Oddelenie",
-		"classification": "Zaradenie",
 		"mail": "E-mail",
 		"contacts": "Kontakt",
 		"about": "Opis",
