@@ -10,14 +10,14 @@ const TeacherCard = (props: Teacher) => {
 			<img
 				src={props.photoUrl ? props.photoUrl : 'https://via.placeholder.com/150'}
 				alt='avatar'
-				className='max-h-24 max-w-2max-h-24 rounded-sm'
+				className='w-28 h-full rounded'
 			/>
 			<div className='flex flex-col w-11/12'>
 				<p className='text-lg'>{props.department}</p>
 				<h1 className='text-2xl font-medium'>
 					{props.title} {props.name} {props.surname}
 				</h1>
-				<p className='text-zinc-500 truncate pr-1'>{props.description}</p>
+				<p className='text-zinc-500 truncate pr-8'>{props.description}</p>
 				<Link
 					to={`/teachers/${props.teacherId}`}
 					className='bg-blue-500 text-white text-center text-sm p-1 rounded-lg w-40 mt-4'

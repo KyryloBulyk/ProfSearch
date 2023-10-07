@@ -1,4 +1,3 @@
-import axios from 'axios';
 import Fuse from 'fuse.js';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useRef, useState } from 'react';
@@ -23,7 +22,7 @@ const SearchPage = () => {
 	const [sorting, setSorting] = useState<OptionType>();
 	const lastElementRef = useRef(null);
 	const { fetching, error } = useFetching(async () => {
-		const { data } = await api.get('/api/teachers');
+		const { data } = await api.get('/teachers');
 		setTeachers(data);
 	});
 
