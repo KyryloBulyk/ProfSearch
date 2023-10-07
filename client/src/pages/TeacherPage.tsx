@@ -24,8 +24,10 @@ const TeacherPage = () => {
 	return (
 		<div className='py-24 max-w-7xl my-0 mx-auto flex'>
 			<div className='flex flex-col md:flex-row gap-10'>
-				<div className='w-52 h-full'>
-					{teacher.photoUrl && <img src={teacher.photoUrl} alt={teacher.surname} className='rounded-md' />}
+				<div className='w-1/3'>
+					{teacher.photoUrl && (
+						<img src={teacher.photoUrl} alt={teacher.surname} className='w-full rounded-md' />
+					)}
 				</div>
 				<table className='text-left text-xl'>
 					<tbody>
@@ -57,6 +59,10 @@ const TeacherPage = () => {
 									</Link>
 								)}
 							</td>
+						</tr>
+						<tr>
+							<th className='pt-5 align-top'>{t('teacherPage.about')}:</th>
+							<p className='pl-5 pt-5'>{teacher.description}</p>
 						</tr>
 					</tbody>
 				</table>
