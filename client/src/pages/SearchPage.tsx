@@ -9,6 +9,7 @@ import BounceLoader from 'react-spinners/BounceLoader';
 import TeacherList from '../components/TeacherList';
 import { teachersData, fuseOptions } from '../utils';
 import { Teacher } from '../types';
+import api from '../api/teachers';
 
 type OptionType = {
 	value: string;
@@ -22,7 +23,7 @@ const SearchPage = () => {
 	const [sorting, setSorting] = useState<OptionType>();
 	const lastElementRef = useRef(null);
 	const { fetching, error } = useFetching(async () => {
-		const { data } = await axios.get('http://147.232.182.160:8080/api/teachers');
+		const { data } = await api.get('/api/teachers');
 		setTeachers(data);
 	});
 
