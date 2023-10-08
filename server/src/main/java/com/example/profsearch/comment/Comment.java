@@ -15,7 +15,7 @@ public class Comment {
     //----------------------------------
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "commentid")
     private Long id;
 

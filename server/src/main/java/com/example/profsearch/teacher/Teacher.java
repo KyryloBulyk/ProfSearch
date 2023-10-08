@@ -16,8 +16,8 @@ public class Teacher {
 
     @Id
     @Column(name = "teacherid")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long teacherId;
 
     //Photo for the Teacher in URL form
     @Column(name = "photourl")
@@ -77,12 +77,12 @@ public class Teacher {
         this.comments = comments;
     }
 
-    public Long getId() {
-        return id;
+    public Long getTeacherId() {
+        return teacherId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setTeacherId(Long teacherId) {
+        this.teacherId = teacherId;
     }
 
     public String getPhotoUrl() {
@@ -168,7 +168,7 @@ public class Teacher {
     @Override
     public String toString() {
         return "Teacher{" +
-                "id=" + id +
+                "id=" + teacherId +
                 ", photoUrl='" + photoUrl + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
