@@ -64,10 +64,15 @@ const TeacherPage = () => {
 						onAddComment={addComment}
 						isActive={isCommentFormVisible}
 					/>
-					<div className={isCommentFormVisible ? 'pt-72' : 'pt-8'}>
-						{teacher.comments.map((comment, index) => (
-							<Comment key={index} content={comment.content} author={comment.author} />
-						))}
+					<div className={isCommentFormVisible ? 'pt-72 flex flex-col gap-8' : 'pt-8 flex flex-col gap-8'}>
+						{teacher.comments &&
+							teacher.comments.map((comment) => (
+								<Comment
+									key={comment.commentId}
+									content={comment.commentText}
+									author={comment.author}
+								/>
+							))}
 					</div>
 				</div>
 			</div>
