@@ -8,8 +8,7 @@ const App = () => {
 		<Routes>
 			<Route path='/' element={<Layout />}>
 				<Route index element={<SearchPage />} />
-				<Route path='teacher' element={<TeacherPage />} />
-				<Route path='teachers/:id' element={<TeacherPage />}></Route>
+				<Route path='teachers/:teacherid' element={<TeacherPage />} />
 			</Route>
 		</Routes>
 	);

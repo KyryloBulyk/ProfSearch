@@ -1,3 +1,5 @@
+// DO NOT MODIFY EXISTING TYPES
+
 export interface Teacher {
 	teacherId: number;
 	photoUrl: string | null;
@@ -10,6 +12,8 @@ export interface Teacher {
 	instagramUrl: string | null;
 	description: string | null;
 	title: string | null;
+	subjects: string[];
+	comments: Comment[];
 }
 
 export interface SerializedError {
@@ -22,4 +26,9 @@ export interface SerializedError {
 export interface SortOption {
 	value: string;
 	label: string;
+}
+
+export interface Comment {
+	author: string;
+	content: string;
 }

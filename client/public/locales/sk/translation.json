@@ -7,7 +7,7 @@
 	},
 	"teacherList": {
 		"errorMessage": "Učitelia neboli nájdení",
-		"teachers": "Učitelia",
+		"teachers": "učitelia",
 		"filter": "Filter podľa",
 		"filterValues": {
 			"alphabet": "Abecedy",
@@ -16,5 +16,30 @@
 	},
 	"teacherCard": {
 		"button": "Zobraziť viac"
+	},
+	"teacherPage": {
+		"name": "Meno",
+		"department": "Oddelenie",
+		"mail": "E-mail",
+		"contacts": "Kontakt",
+		"about": "Opis",
+		"building": "Budova",
+		"room": "Miestnosť",
+		"subjects": "Predmety",
+		"comments": "Komentáre",
+		"comment": {
+			"placeholder": "Napíšte komentár",
+			"button": "Pridať komentár"
+		}
+	},
+	"progressBar": {
+		"header": "Týždeň semestra",
+		"week": "týždeň"
+	},
+	"commentForm": {
+		"name": "Napište svoje meno",
+		"context": "Napíšte svoj komentár",
+		"add": "Pridať komentár",
+		"cancel": "Zrušiť"
 	}
 }
