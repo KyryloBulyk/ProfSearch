@@ -7,7 +7,7 @@ interface CommentProps {
 
 const Comment = ({ author, content }: CommentProps) => {
 	return (
-		<div>
+		<div className='border border-zinc-300 rounded-md p-4'>
 			<div className='flex items-center gap-4'>
 				<BsPersonCircle size='2rem' />
 				<p className='font-bold text-xl'>{author}</p>

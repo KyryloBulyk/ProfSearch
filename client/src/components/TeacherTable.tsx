@@ -52,14 +52,18 @@ const TeacherTable = ({ teacher }: TeacherTableProps) => {
 				</tr>
 				<tr>
 					<th className='pt-5 align-top'>{t('teacherPage.subjects')}:</th>
-					<td className='pl-5 pt-5'>
-						{teacher.subjects.map((subject, index) => (
-							<span key={index}>
-								{subject}
-								{index !== teacher.subjects.length - 1 ? ',' : '.'}{' '}
-							</span>
-						))}
-					</td>
+					{teacher.subjects ? (
+						<td className='pl-5 pt-5'>
+							{teacher.subjects.map((subject, index) => (
+								<span key={index}>
+									{subject}
+									{teacher.subjects && index !== teacher.subjects.length - 1 ? ',' : '.'}{' '}
+								</span>
+							))}
+						</td>
+					) : (
+						''
+					)}
 				</tr>
 				<tr>
 					<th className='pt-5 align-top'>{t('teacherPage.about')}:</th>

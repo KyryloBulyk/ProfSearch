@@ -12,8 +12,8 @@ export interface Teacher {
 	instagramUrl: string | null;
 	description: string | null;
 	title: string | null;
-	subjects: string[];
-	comments: Comment[];
+	subjects: string[] | null;
+	comments: Comment[] | null;
 }
 
 export interface SerializedError {
@@ -29,6 +29,8 @@ export interface SortOption {
 }
 
 export interface Comment {
-	author: string;
-	content: string;
+	author: string | null;
+	commentText: string;
+	date: string;
+	commentId: 5;
 }
