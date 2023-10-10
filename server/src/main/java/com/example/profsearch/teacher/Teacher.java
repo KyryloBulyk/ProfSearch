@@ -35,9 +35,13 @@ public class Teacher {
     @Column(name = "title")
     private String title;
 
-    //Location
-    @Column(name = "location")
-    private String location;
+    //Building
+    @Column(name = "building")
+    private String building;
+
+    //Room
+    @Column(name = "room")
+    private String room;
 
     //Department
     @Column(name = "department")
@@ -56,8 +60,12 @@ public class Teacher {
     private String instagramUrl;
 
     //Description
-    @Column(name = "description", length = 1000)
-    private String description;
+    @Column(name = "description_ukraine", length = 1000)
+    private String description_ukraine;
+
+    //Description
+    @Column(name = "decription_slovak", length = 1000)
+    private String decription_slovak;
 
     //Connection between Tables "Teachers" and "Comments" in PostgresSQL
     @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -117,12 +125,36 @@ public class Teacher {
         this.title = title;
     }
 
-    public String getLocation() {
-        return location;
+    public String getBuilding() {
+        return building;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setBuilding(String building) {
+        this.building = building;
+    }
+
+    public String getRoom() {
+        return room;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
+    }
+
+    public String getDescription_ukraine() {
+        return description_ukraine;
+    }
+
+    public void setDescription_ukraine(String description_ukraine) {
+        this.description_ukraine = description_ukraine;
+    }
+
+    public String getDecription_slovak() {
+        return decription_slovak;
+    }
+
+    public void setDecription_slovak(String decription_slovak) {
+        this.decription_slovak = decription_slovak;
     }
 
     public String getDepartment() {
@@ -157,28 +189,23 @@ public class Teacher {
         this.instagramUrl = instagramUrl;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     @Override
     public String toString() {
         return "Teacher{" +
-                "id=" + teacherId +
+                "teacherId=" + teacherId +
                 ", photoUrl='" + photoUrl + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", title='" + title + '\'' +
-                ", location='" + location + '\'' +
+                ", building='" + building + '\'' +
+                ", room='" + room + '\'' +
                 ", department='" + department + '\'' +
                 ", contactEmail='" + contactEmail + '\'' +
                 ", linkedinUrl='" + linkedinUrl + '\'' +
                 ", instagramUrl='" + instagramUrl + '\'' +
-                ", description='" + description + '\'' +
+                ", description_ukraine='" + description_ukraine + '\'' +
+                ", decription_slovak='" + decription_slovak + '\'' +
+                ", comments=" + comments +
                 '}';
     }
 }
