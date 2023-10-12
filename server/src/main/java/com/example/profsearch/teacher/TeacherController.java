@@ -65,12 +65,14 @@ public class TeacherController {
             teacher.setPhotoUrl(teacherDetails.getPhotoUrl());
             teacher.setSurname(teacherDetails.getSurname());
             teacher.setTitle(teacherDetails.getTitle());
-            teacher.setLocation(teacherDetails.getLocation());
+            teacher.setBuilding(teacherDetails.getBuilding());
+            teacher.setRoom(teacherDetails.getRoom());
             teacher.setDepartment(teacherDetails.getDepartment());
             teacher.setContactEmail(teacherDetails.getContactEmail());
             teacher.setLinkedinUrl(teacherDetails.getLinkedinUrl());
             teacher.setInstagramUrl(teacherDetails.getInstagramUrl());
-            teacher.setDescription(teacherDetails.getDescription());
+            teacher.setDescription_ukraine(teacherDetails.getDescription_ukraine());
+            teacher.setDecription_slovak(teacherDetails.getDecription_slovak());
             Teacher updatedTeacher = teacherService.save(teacher);
             return ResponseEntity.ok(updatedTeacher);
         } else {
