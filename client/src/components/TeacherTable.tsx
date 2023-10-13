@@ -8,7 +8,7 @@ interface TeacherTableProps {
 }
 
 const TeacherTable = ({ teacher }: TeacherTableProps) => {
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
 
 	return (
 		<table className='text-left text-xl'>
@@ -25,11 +25,11 @@ const TeacherTable = ({ teacher }: TeacherTableProps) => {
 				</tr>
 				<tr>
 					<th className='pt-5'>{t('teacherPage.building')}:</th>
-					<td className='pl-5 pt-5'>{teacher.location}</td>
+					<td className='pl-5 pt-5'>{teacher.building}</td>
 				</tr>
 				<tr>
 					<th className='pt-5'>{t('teacherPage.room')}:</th>
-					<td className='pl-5 pt-5'>{teacher.location}</td>
+					<td className='pl-5 pt-5'>{teacher.room}</td>
 				</tr>
 				<tr>
 					<th className='pt-5'>{t('teacherPage.mail')}:</th>
@@ -39,12 +39,20 @@ const TeacherTable = ({ teacher }: TeacherTableProps) => {
 					<th className='pt-5'>{t('teacherPage.contacts')}:</th>
 					<td className='pl-5 flex gap-5 pt-5'>
 						{teacher.linkedinUrl && (
-							<Link to={teacher.linkedinUrl} target='_blank' className='w-8 h-w-8'>
+							<Link
+								to={teacher.linkedinUrl}
+								target='_blank'
+								className='w-8 h-w-8'
+							>
 								<AiFillLinkedin className='w-full h-full' />
 							</Link>
 						)}
 						{teacher.instagramUrl && (
-							<Link to={teacher.instagramUrl} target='_blank' className='w-8 h-w-8'>
+							<Link
+								to={teacher.instagramUrl}
+								target='_blank'
+								className='w-8 h-w-8'
+							>
 								<AiOutlineInstagram className='w-full h-full' />
 							</Link>
 						)}
@@ -67,7 +75,9 @@ const TeacherTable = ({ teacher }: TeacherTableProps) => {
 				</tr>
 				<tr>
 					<th className='pt-5 align-top'>{t('teacherPage.about')}:</th>
-					<td className='pl-5 pt-5'>{teacher.description}</td>
+					<td className='pl-5 pt-5'>
+						{i18n.language === 'uk' ? teacher.description_ukraine : teacher.decription_slovak}
+					</td>
 				</tr>
 			</tbody>
 		</table>

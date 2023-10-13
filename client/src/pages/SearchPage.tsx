@@ -17,19 +17,20 @@ type OptionType = {
 
 const SearchPage = () => {
 	const { t } = useTranslation();
-	const [teachers, setTeachers] = useState<Teacher[]>(teachersData);
+	const [teachers, setTeachers] = useState<Teacher[]>([]);
 	const [search, setSearch] = useState('');
 	const [sorting, setSorting] = useState<OptionType>();
 	const lastElementRef = useRef(null);
 	const { fetching, error } = useFetching(async () => {
 		const { data } = await api.get('/teachers');
 		setTeachers(data);
+		console.log(data);
 	});
 
 	// TODO - fetch teachers
-	// useEffect(() => {
-	// 	fetching();
-	// }, []);
+	useEffect(() => {
+		fetching();
+	}, []);
 
 	// useObserver();
 	const sortOptions: OptionType[] = [
@@ -78,14 +79,20 @@ const SearchPage = () => {
 						value={search}
 						onChange={(e) => setSearch(e.target.value)}
 					/>
-					<button className='bg-blue-500 text-white p-2 text-base rounded-r-lg w-52' onClick={handleSearch}>
+					<button
+						className='bg-blue-500 text-white p-2 text-base rounded-r-lg w-52'
+						onClick={handleSearch}
+					>
 						{t('header.button')}
 					</button>
 				</div>
 			</div>
 			<div className='bg-stone-100 py-20'>
 				{!teachers ? (
-					<BounceLoader color='#3575E2' className='absolute left-1/2' />
+					<BounceLoader
+						color='#3575E2'
+						className='absolute left-1/2'
+					/>
 				) : (
 					<div className='max-w-7xl my-0 mx-auto'>
 						<div className='flex justify-between'>
@@ -102,8 +109,14 @@ const SearchPage = () => {
 								}
 							/>
 						</div>
-						<TeacherList teachers={teachers} error={error} />
-						<div className='h-5' ref={lastElementRef}></div>
+						<TeacherList
+							teachers={teachers}
+							error={error}
+						/>
+						<div
+							className='h-5'
+							ref={lastElementRef}
+						></div>
 					</div>
 				)}
 			</div>

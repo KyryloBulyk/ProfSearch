@@ -5,12 +5,14 @@ export interface Teacher {
 	photoUrl: string | null;
 	name: string;
 	surname: string;
-	location: string | null;
+	building: string | null;
 	department: string | null;
+	room: string | null;
 	contactEmail: string | null;
 	linkedinUrl: string | null;
 	instagramUrl: string | null;
-	description: string | null;
+	description_ukraine: string | null;
+	decription_slovak: string | null;
 	title: string | null;
 	subjects: string[] | null;
 	comments: Comment[] | null;
@@ -29,7 +31,7 @@ export interface SortOption {
 }
 
 export interface Comment {
-	author: string | null;
+	author: string;
 	commentText: string;
 	date: string;
 	commentId: 5;

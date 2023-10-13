@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Comment from '../components/Comment';
 import { useEffect, useState } from 'react';
 import { Teacher } from '../types';
-import { teachersData } from '../utils';
+// import { teachersData } from '../utils';
 import api from '../api/teachers';
 import TeacherTable from '../components/TeacherTable';
 import AddCommentForm from '../components/AddCommentForm';
@@ -12,7 +12,7 @@ import AddCommentForm from '../components/AddCommentForm';
 const TeacherPage = () => {
 	const { id } = useParams();
 	const { t } = useTranslation();
-	const [teacher, setTeacher] = useState<Teacher>(teachersData[0]);
+	const [teacher, setTeacher] = useState<Teacher>();
 	const [isCommentFormVisible, setIsCommentFormVisible] = useState(false);
 	const { fetching } = useFetching(async () => {
 		const { data } = await api.get(`/teachers/${id}`);
@@ -20,9 +20,9 @@ const TeacherPage = () => {
 		setTeacher(data);
 	});
 	// TODO - fetch teacher by id
-	// useEffect(() => {
-	// 	fetching();
-	// }, []);
+	useEffect(() => {
+		fetching();
+	}, []);
 
 	const addComment = async (name: string, context: string) => {
 		await api.post(`/teachers/${id}/comments`, { name, context });
@@ -43,7 +43,11 @@ const TeacherPage = () => {
 			<div className='flex flex-col md:flex-row gap-10'>
 				<div className='w-1/3'>
 					{teacher.photoUrl && (
-						<img src={teacher.photoUrl} alt={teacher.surname} className='w-full rounded-md' />
+						<img
+							src={teacher.photoUrl}
+							alt={teacher.surname}
+							className='w-full rounded-md'
+						/>
 					)}
 				</div>
 				<TeacherTable teacher={teacher} />
@@ -53,7 +57,10 @@ const TeacherPage = () => {
 				<div className='flex justify-between items-end'>
 					<h1 className='text-3xl font-bold pt-10'>{t('teacherPage.comments')}</h1>
 					{!isCommentFormVisible && (
-						<button className='bg-blue-500 text-white px-3 py-2 rounded-md' onClick={showCommentForm}>
+						<button
+							className='bg-blue-500 text-white px-3 py-2 rounded-md'
+							onClick={showCommentForm}
+						>
 							{t('teacherPage.comment.button')}
 						</button>
 					)}
