@@ -46,14 +46,18 @@ The Spring backend will start, and you can access the API at [http://localhost:8
 
 Ensure that PostgreSQL is installed and running on your system. You should have a PostgreSQL database created and configured for this project.
 
-You can access the database using your preferred PostgreSQL client or by running commands in the terminal.
+You need to go to the `db` directory with the .sql file
+
+```shell
+    psql -U postgres profsearchdb -a -f profsearchdb.sql
+```
 
 ### Project Structure
 
-Frontend code is located in the `clinet` directory.
-Backend code is located in the `server` directory.
-Database code is located in the `db` directory.
-Admin Frontend code is located in the `admin` directory.
+-   Frontend code is located in the `clinet` directory.
+-   Backend code is located in the `server` directory.
+-   Database code is located in the `db` directory.
+-   Admin Frontend code is located in the `admin` directory.
 
 ### Issues and Support
 
@@ -61,4 +65,4 @@ If you encounter any issues or have questions about the project, please create a
 
 Thank you for using this project!
 
-Happy coding!
+Happy coding!😉
