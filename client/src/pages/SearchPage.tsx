@@ -24,7 +24,6 @@ const SearchPage = () => {
 	const { fetching, error } = useFetching(async () => {
 		const { data } = await api.get('/teachers');
 		setTeachers(data);
-		console.log(data);
 	});
 
 	// TODO - fetch teachers
@@ -66,11 +65,11 @@ const SearchPage = () => {
 	return (
 		<div>
 			<div className='py-24 max-w-7xl my-0 mx-auto'>
-				<h1 className='text-6xl font-bold'>
+				<h1 className='text-4xl font-bold md:text-6xl'>
 					{t('header.title')}
 					{/* Find the Right <span className='text-blue-600'>Teacher</span> for You */}
 				</h1>
-				<p className='text-lg pt-2'>{t('header.subtitle')}</p>
+				<p className='text-sm md:text-lg pt-2'>{t('header.subtitle')}</p>
 				<div className='flex pt-10'>
 					<input
 						type='text'

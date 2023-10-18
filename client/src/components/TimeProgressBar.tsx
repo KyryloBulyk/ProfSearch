@@ -11,7 +11,7 @@ const TimeProgressBar = () => {
 			<ProgressBar
 				completed={getStudyWeek()}
 				maxCompleted={12}
-				width='250px'
+				width='100%'
 				height='30px'
 				borderRadius='4px'
 				bgColor='#3b82f6'
