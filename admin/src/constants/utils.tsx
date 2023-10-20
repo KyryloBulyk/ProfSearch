@@ -32,3 +32,15 @@ export const links = [
     ],
   },
 ];
+
+export interface IState {
+  chat: boolean;
+  notification: boolean;
+  adminProfile: boolean;
+}
+
+export const initialState = {
+  chat: false,
+  notification: false,
+  adminProfile: false,
+};
