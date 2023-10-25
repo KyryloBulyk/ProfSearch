@@ -34,5 +34,5 @@ export interface Comment {
 	author: string;
 	commentText: string;
 	date: string;
-	commentId: 5;
+	commentId: number;
 }
