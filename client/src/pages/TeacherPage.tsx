@@ -16,6 +16,11 @@ const TeacherPage = () => {
 	const [isCommentFormVisible, setIsCommentFormVisible] = useState(false);
 	const { fetching } = useFetching(async () => {
 		const { data } = await api.get(`/teachers/${id}`);
+		if (data.comments) {
+			data.comments.sort(
+				(a: { date: string }, b: { date: string }) => new Date(b.date).getTime() - new Date(a.date).getTime()
+			);
+		}
 		setTeacher(data);
 	});
 
