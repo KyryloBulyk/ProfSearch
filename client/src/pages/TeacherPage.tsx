@@ -86,7 +86,7 @@ const TeacherPage = () => {
 									key={comment.commentId}
 									content={comment.commentText}
 									author={comment.author}
-									date={timeAgo(comment.date)}
+									date={comment.date ? timeAgo(comment.date) : ''}
 								/>
 							))}
 					</div>

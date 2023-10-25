@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const formStyles = 'border border-zinc-300 p-4 duration-150 transform transition-all absolute w-full z-10';
@@ -12,10 +12,30 @@ interface AddCommentFormProps {
 const AddCommentForm = ({ isActive, onAddComment, onCancel }: AddCommentFormProps) => {
 	const { t } = useTranslation();
 	const [commentData, setCommentData] = useState({ name: '', context: '' });
+	const [lastCommentTime, setLastCommentTime] = useState<number | null>(
+		JSON.parse(localStorage.getItem('lastCommentTime') || 'null')
+	);
 
 	const addComment = () => {
+		if (!commentData.name.trim() || !commentData.context.trim()) {
+			alert('Please fill all fields.');
+			return;
+		}
+
+		const currentTime = Date.now();
+
+		if (lastCommentTime && currentTime - lastCommentTime < 2 * 60 * 1000) {
+			alert('Please wait for 2 minutes before adding another comment.');
+			return;
+		}
+
 		onAddComment(commentData.name, commentData.context);
+		setLastCommentTime(currentTime);
 	};
+
+	useEffect(() => {
+		localStorage.setItem('lastCommentTime', JSON.stringify(lastCommentTime));
+	}, [lastCommentTime]);
 
 	return (
 		<form
@@ -40,10 +60,17 @@ const AddCommentForm = ({ isActive, onAddComment, onCancel }: AddCommentFormProp
 			<div className='border border-zinc-200 my-8'></div>
 			<div className='flex justify-end'>
 				<div className='flex gap-4'>
-					<button className='bg-red-600 text-white px-3 py-2 rounded-md' onClick={onCancel}>
+					<button
+						className='bg-red-600 text-white px-3 py-2 rounded-md'
+						onClick={onCancel}
+					>
 						{t('commentForm.cancel')}
 					</button>
-					<button className='bg-blue-500 text-white px-3 py-2 rounded-md' onClick={addComment} type='submit'>
+					<button
+						className='bg-blue-500 text-white px-3 py-2 rounded-md'
+						onClick={addComment}
+						type='submit'
+					>
 						{t('commentForm.add')}
 					</button>
 				</div>
