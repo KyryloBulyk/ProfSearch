@@ -38,7 +38,11 @@ export default {
       },
       minHeight: {
         590: '590px',
-      }
+      },
+      backgroundImage: {
+        'hero-pattern':
+          "url('https://i.ibb.co/pfMC2jC/pngtree-virtual-assistant-handles-client-communication-and-problemsolving-remotely-vector-png-image.png')",
+      },
     },
   },
   plugins: [],
