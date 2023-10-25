@@ -75,3 +75,30 @@ export function getStudyWeek() {
 	const currentWeek = Math.ceil((currentDate - startDateTime) / (7 * 24 * 60 * 60 * 1000));
 	return currentWeek > totalWeeks ? totalWeeks : currentWeek;
 }
+
+export function timeAgo(postedDate: string): string {
+	const currentDate = new Date();
+	const dateParts = postedDate.split('-').map((part) => parseInt(part, 10));
+	const commentDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+
+	const diffInSeconds = Math.floor((currentDate.getTime() - commentDate.getTime()) / 1000);
+	const minute = 60;
+	const hour = minute * 60;
+	const day = hour * 24;
+	const month = day * 30.44; // average days in month
+	const year = day * 365.25; // accounting for leap years
+
+	if (diffInSeconds < minute) {
+		return 'just now';
+	} else if (diffInSeconds < hour) {
+		return `${Math.floor(diffInSeconds / minute)} minutes ago`;
+	} else if (diffInSeconds < day) {
+		return `${Math.floor(diffInSeconds / hour)} hours ago`;
+	} else if (diffInSeconds < month) {
+		return `${Math.floor(diffInSeconds / day)} days ago`;
+	} else if (diffInSeconds < year) {
+		return `${Math.floor(diffInSeconds / month)} months ago`;
+	} else {
+		return `${Math.floor(diffInSeconds / year)} years ago`;
+	}
+}

@@ -7,6 +7,7 @@ import { Teacher } from '../types';
 import api from '../api/teachers';
 import TeacherTable from '../components/TeacherTable';
 import AddCommentForm from '../components/AddCommentForm';
+import { timeAgo } from '../utils';
 
 const TeacherPage = () => {
 	const { id } = useParams();
@@ -22,9 +23,18 @@ const TeacherPage = () => {
 		fetching();
 	}, []);
 
-	const addComment = async (name: string, context: string) => {
-		await api.post(`/teachers/${id}/comments`, { author: name, commentText: context, date: '' });
+	const addComment = async (author: string, commentText: string) => {
+		const currentDate = new Date();
+
+		const formattedDate = [
+			currentDate.getFullYear(),
+			String(currentDate.getMonth() + 1).padStart(2, '0'),
+			String(currentDate.getDate()).padStart(2, '0'),
+		].join('-');
+
+		await api.post(`/teachers/${id}/comments`, { author, commentText, date: formattedDate });
 		hideCommentForm();
+		fetching();
 	};
 
 	const showCommentForm = () => {
@@ -76,6 +86,7 @@ const TeacherPage = () => {
 									key={comment.commentId}
 									content={comment.commentText}
 									author={comment.author}
+									date={timeAgo(comment.date)}
 								/>
 							))}
 					</div>
