@@ -24,15 +24,7 @@ const TeacherPage = () => {
 	}, []);
 
 	const addComment = async (author: string, commentText: string) => {
-		const currentDate = new Date();
-
-		const formattedDate = [
-			currentDate.getFullYear(),
-			String(currentDate.getMonth() + 1).padStart(2, '0'),
-			String(currentDate.getDate()).padStart(2, '0'),
-		].join('-');
-
-		await api.post(`/teachers/${id}/comments`, { author, commentText, date: formattedDate });
+		await api.post(`/teachers/${id}/comments`, { author, commentText, date: new Date().toISOString() });
 		hideCommentForm();
 		fetching();
 	};
@@ -79,7 +71,7 @@ const TeacherPage = () => {
 						onAddComment={addComment}
 						isActive={isCommentFormVisible}
 					/>
-					<div className={isCommentFormVisible ? 'pt-72 flex flex-col gap-8' : 'pt-8 flex flex-col gap-8'}>
+					<div className={isCommentFormVisible ? 'pt-72 flex flex-col gap-5' : 'pt-8 flex flex-col gap-5'}>
 						{teacher.comments &&
 							teacher.comments.map((comment) => (
 								<Comment
