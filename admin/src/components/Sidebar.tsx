@@ -6,7 +6,13 @@ import { useStateContext, ContextType } from "../contexts/ContextProvider";
 
 
 const Sidebar = () => {
-  const {isMenuActive, setIsMenuActive } = useStateContext() as ContextType;
+  const {isMenuActive, setIsMenuActive, screenSize } = useStateContext() as ContextType;
+
+  const handleCloseSidebar = () => {
+    if(isMenuActive && screenSize <= 900) {
+      setIsMenuActive(false);
+    }
+  }
 
   const activeLink =
     "flex items-center gap-5 px-4 pt-3 pb-2.5 rounded-lg  dark:text-white  text-md m-2 bg-light-gray";
@@ -20,7 +26,7 @@ const Sidebar = () => {
           <div className="flex justify-between items-center">
             <Link
               to="/"
-              onClick={() => setIsMenuActive(false)}
+              onClick={() => handleCloseSidebar}
               className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900"
             >
               <img src="/img/logo.png" alt="logo" className="h-12 w-12" />
@@ -43,7 +49,7 @@ const Sidebar = () => {
                   <NavLink
                     to={`/${link.name}`}
                     key={link.name}
-                    onClick={() => {}}
+                    onClick={() => {handleCloseSidebar}}
                     className={({ isActive }) =>
                       isActive ? activeLink : normalLink
                     }

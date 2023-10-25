@@ -46,7 +46,28 @@ const Navbar = () => {
     isClicked,
     setIsClicked,
     handleClick,
+    screenSize,
+    setScreenSize,
   } = useStateContext() as ContextType;
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenSize(window.innerWidth);
+      window.addEventListener("resize", handleResize);
+
+      handleResize();
+
+      return () => window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    screenSize <= 900 
+      ? setIsMenuActive(false) 
+      : setIsMenuActive(true);
+  }, [screenSize])
+  
+
   return (
     <div className="flex justify-between p-2 md:mx-6 relative">
       <NavButton
@@ -56,7 +77,7 @@ const Navbar = () => {
         icon={<AiOutlineMenu />}
       />
       <div className="flex">
-      <NavButton
+        <NavButton
           title="Notifications"
           customFunc={() => handleClick("notification")}
           color="black"
