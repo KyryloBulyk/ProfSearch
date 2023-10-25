@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import Comment from '../components/Comment';
 import { useEffect, useState } from 'react';
 import { Teacher } from '../types';
-// import { teachersData } from '../utils';
 import api from '../api/teachers';
 import TeacherTable from '../components/TeacherTable';
 import AddCommentForm from '../components/AddCommentForm';
@@ -16,16 +15,15 @@ const TeacherPage = () => {
 	const [isCommentFormVisible, setIsCommentFormVisible] = useState(false);
 	const { fetching } = useFetching(async () => {
 		const { data } = await api.get(`/teachers/${id}`);
-
 		setTeacher(data);
 	});
-	// TODO - fetch teacher by id
+
 	useEffect(() => {
 		fetching();
 	}, []);
 
 	const addComment = async (name: string, context: string) => {
-		await api.post(`/teachers/${id}/comments`, { name, context });
+		await api.post(`/teachers/${id}/comments`, { author: name, commentText: context, date: '' });
 		hideCommentForm();
 	};
 
@@ -39,7 +37,7 @@ const TeacherPage = () => {
 
 	if (!teacher) return <h1 className='text-3xl text-center pt-20 font-bold'>Teacher not found</h1>;
 	return (
-		<div className='py-24 max-w-7xl my-0 mx-auto'>
+		<div className='py-24 px-4 max-w-7xl my-0 mx-auto'>
 			<div className='flex flex-col md:flex-row gap-10'>
 				<div className='w-1/3'>
 					{teacher.photoUrl && (

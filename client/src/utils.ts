@@ -12,46 +12,24 @@ export const teachersData: Teacher[] = [
 		],
 		name: 'John',
 		surname: 'Doe',
-		location: 'London',
 		department: 'KPI',
 		contactEmail: 'some@gmail.com',
 		linkedinUrl: 'https://www.linkedin.com/',
 		instagramUrl: 'https://www.instagram.com/',
 		title: 'doc. Ing.',
-		description:
+		building: 'A',
+		room: 'A-123',
+		description_ukraine:
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.',
+		decription_slovak:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.',
 		comments: [
 			{
+				commentId: 1,
 				author: 'John',
-				content:
+				commentText:
 					'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.',
-			},
-		],
-	},
-	{
-		teacherId: 2,
-		photoUrl: 'https://i.imgur.com/5QxXb2o.png',
-		name: 'Steve',
-		surname: 'Rogers',
-		location: 'LA',
-		department: 'KTMI',
-		subjects: [
-			'doménovo špecifické jazyky',
-			'inžinierstvo počítačových jazykov',
-			'architektúry softvérových systémov',
-			'moderné používateľské rozhrania',
-		],
-		contactEmail: 'his@gmail.com',
-		linkedinUrl: 'https://www.linkedin.com/',
-		instagramUrl: 'https://www.instagram.com/',
-		title: 'doc.',
-		description:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.',
-		comments: [
-			{
-				author: 'John',
-				content:
-					'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.',
+				date: '2021-09-25',
 			},
 		],
 	},

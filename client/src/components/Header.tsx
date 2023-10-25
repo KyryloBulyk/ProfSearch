@@ -9,14 +9,23 @@ const Header = () => {
 	};
 
 	return (
-		<div className='flex justify-between items-center max-w-7xl my-0 mx-auto pt-4'>
+		<div className='flex justify-between items-center max-w-7xl my-0 mx-auto p-4'>
 			<div>
 				<Link to='/'>
-					<img src='/img/capture.png' alt='logo' className='h-16' />
+					<img
+						src='/img/capture.png'
+						alt='logo'
+						className='h-16 hidden md:inline'
+					/>
+					<img
+						src='/img/sm_logo.png'
+						alt='logo'
+						className='h-16 md:hidden'
+					/>
 				</Link>
 			</div>
 			<div className='flex gap-2 items-center -mt-3'>
-				<div className='pr-5 pb-0.5'>
+				<div className='pr-5 pb-0.5 w-40 md:w-64'>
 					<ProgressBar />
 				</div>
 				<button
@@ -25,7 +34,10 @@ const Header = () => {
 				>
 					UK
 				</button>
-				<button className='bg-red-500 text-white font-bold p-3 rounded' onClick={() => changeLanguage('sk')}>
+				<button
+					className='bg-red-500 text-white font-bold p-3 rounded'
+					onClick={() => changeLanguage('sk')}
+				>
 					SK
 				</button>
 			</div>
