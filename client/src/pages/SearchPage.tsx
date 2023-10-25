@@ -16,7 +16,7 @@ type OptionType = {
 
 const SearchPage = () => {
 	const { t } = useTranslation();
-	const [teachers, setTeachers] = useState<Teacher[]>();
+	const [teachers, setTeachers] = useState<Teacher[]>([]);
 	const [search, setSearch] = useState('');
 	const [sorting, setSorting] = useState<OptionType>();
 	const lastElementRef = useRef(null);
