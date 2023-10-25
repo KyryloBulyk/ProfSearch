@@ -76,29 +76,25 @@ export function getStudyWeek() {
 	return currentWeek > totalWeeks ? totalWeeks : currentWeek;
 }
 
-export function timeAgo(postedDate: string): string {
-	const currentDate = new Date();
-	const dateParts = postedDate.split('-').map((part) => parseInt(part, 10));
-	const commentDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+export function timeAgo(commentTime: string): string {
+	const now = new Date();
+	const commentDate = new Date(commentTime);
+	const seconds = Math.floor((now.getTime() - commentDate.getTime()) / 1000);
 
-	const diffInSeconds = Math.floor((currentDate.getTime() - commentDate.getTime()) / 1000);
-	const minute = 60;
-	const hour = minute * 60;
-	const day = hour * 24;
-	const month = day * 30.44; // average days in month
-	const year = day * 365.25; // accounting for leap years
+	if (seconds < 60) return 'Just now';
 
-	if (diffInSeconds < minute) {
-		return 'just now';
-	} else if (diffInSeconds < hour) {
-		return `${Math.floor(diffInSeconds / minute)} minutes ago`;
-	} else if (diffInSeconds < day) {
-		return `${Math.floor(diffInSeconds / hour)} hours ago`;
-	} else if (diffInSeconds < month) {
-		return `${Math.floor(diffInSeconds / day)} days ago`;
-	} else if (diffInSeconds < year) {
-		return `${Math.floor(diffInSeconds / month)} months ago`;
-	} else {
-		return `${Math.floor(diffInSeconds / year)} years ago`;
-	}
+	const minutes = Math.floor(seconds / 60);
+	if (minutes < 60) return `${minutes} minute${minutes !== 1 ? 's' : ''} ago`;
+
+	const hours = Math.floor(minutes / 60);
+	if (hours < 24) return `${hours} hour${hours !== 1 ? 's' : ''} ago`;
+
+	const days = Math.floor(hours / 24);
+	if (days < 30) return `${days} day${days !== 1 ? 's' : ''} ago`;
+
+	const months = Math.floor(days / 30);
+	if (months < 12) return `${months} month${months !== 1 ? 's' : ''} ago`;
+
+	const years = Math.floor(months / 12);
+	return `${years} year${years !== 1 ? 's' : ''} ago`;
 }
