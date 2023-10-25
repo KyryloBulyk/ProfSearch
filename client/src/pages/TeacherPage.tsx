@@ -45,16 +45,14 @@ const TeacherPage = () => {
 	if (!teacher) return <h1 className='text-3xl text-center pt-20 font-bold'>Teacher not found</h1>;
 	return (
 		<div className='py-24 px-4 max-w-7xl my-0 mx-auto'>
-			<div className='flex flex-col md:flex-row gap-10'>
-				<div className='w-1/3'>
-					{teacher.photoUrl && (
-						<img
-							src={teacher.photoUrl}
-							alt={teacher.surname}
-							className='w-full rounded-md'
-						/>
-					)}
-				</div>
+			<div className='flex flex-col md:flex-row gap-10 items-start'>
+				{teacher.photoUrl && (
+					<img
+						src={teacher.photoUrl}
+						alt={teacher.surname}
+						className='w-full rounded-md'
+					/>
+				)}
 				<TeacherTable teacher={teacher} />
 			</div>
 

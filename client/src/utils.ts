@@ -4,23 +4,18 @@ export const teachersData: Teacher[] = [
 	{
 		teacherId: 1,
 		photoUrl: 'https://kpi.fei.tuke.sk/sites/www.kpi.fei.tuke.sk/files/pictures/picture-26-1613466875.jpg',
-		subjects: [
-			'doménovo špecifické jazyky',
-			'inžinierstvo počítačových jazykov',
-			'architektúry softvérových systémov',
-			'moderné používateľské rozhrania',
-		],
+		subjects: [],
 		name: 'John',
 		surname: 'Doe',
 		department: 'KPI',
 		contactEmail: 'some@gmail.com',
-		linkedinUrl: 'https://www.linkedin.com/',
-		instagramUrl: 'https://www.instagram.com/',
+		linkedinUrl: '',
+		instagramUrl: '',
 		title: 'doc. Ing.',
 		building: 'A',
 		room: 'A-123',
 		description_ukraine:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.',
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.Nullam id dolor id nibh ultricies vehicula ut id eliNullam id dolor id nibh ultricies vehicula ut id eliNullam id dolor id nibh ultricies vehicula ut id eliNullam id dolor id nibh ultricies vehicula ut id eliNullam id dolor id nibh ultricies vehicula ut id eliNullam id dolor id nibh ultricies vehicula ut id eliNullam id dolor id nibh ultricies vehicula ut id eliNullam id dolor id nibh ultricies vehicula ut id eli',
 		decription_slovak:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit.',
 		comments: [
