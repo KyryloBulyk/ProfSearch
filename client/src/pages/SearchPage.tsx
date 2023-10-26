@@ -1,12 +1,11 @@
 import Fuse from 'fuse.js';
+import { Button, Input } from 'profsearch-ui-kit';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Select, { SingleValue } from 'react-select';
 import BounceLoader from 'react-spinners/BounceLoader';
 import api from '../api/teachers';
 import TeacherList from '../components/TeacherList';
-import Button from '../components/ui/Button';
-import Input from '../components/ui/Input';
 import { useFetching } from '../hooks/useFetching';
 import { Teacher } from '../types';
 import { fuseOptions } from '../utils';

@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
     children: React.ReactNode;
     className?: string;
