@@ -1,13 +1,15 @@
 import Fuse from 'fuse.js';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useEffect, useRef, useState } from 'react';
-import { useFetching } from '../hooks/useFetching';
 import Select, { SingleValue } from 'react-select';
 import BounceLoader from 'react-spinners/BounceLoader';
-import TeacherList from '../components/TeacherList';
-import { fuseOptions } from '../utils';
-import { Teacher } from '../types';
 import api from '../api/teachers';
+import TeacherList from '../components/TeacherList';
+import Button from '../components/ui/Button';
+import Input from '../components/ui/Input';
+import { useFetching } from '../hooks/useFetching';
+import { Teacher } from '../types';
+import { fuseOptions } from '../utils';
 
 type OptionType = {
     value: string;
@@ -19,7 +21,6 @@ const SearchPage = () => {
     const [teachers, setTeachers] = useState<Teacher[]>([]);
     const [search, setSearch] = useState('');
     const [sorting, setSorting] = useState<OptionType>();
-    const lastElementRef = useRef(null);
     const { fetching, error } = useFetching(async () => {
         const { data } = await api.get('/teachers');
         setTeachers(data);
@@ -61,26 +62,25 @@ const SearchPage = () => {
 
     return (
         <div>
-            <div className='mx-auto my-0 max-w-7xl px-4 py-24'>
+            <div className='mx-auto my-0 max-w-7xl px-3 py-24'>
                 <h1 className='text-4xl font-bold md:text-6xl'>
-                    {t('header.title')}
-                    {/* Find the Right <span className='text-blue-600'>Teacher</span> for You */}
+                    {t('header.title.part_1')}
+                    <span className='text-blue-500'>{t('header.title.part_2')}</span>
+                    {t('header.title.part_3')}
                 </h1>
                 <p className='pt-2 text-sm md:text-lg'>{t('header.subtitle')}</p>
                 <div className='flex pt-10'>
-                    <input
+                    <Input
                         type='text'
-                        className='-mr-1 w-full rounded-l-lg border border-zinc-300 p-2 text-sm duration-100 focus:outline-blue-500 md:p-4 md:text-base'
+                        roundedSide='left'
                         placeholder={t('header.inputPlaceholder')}
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
+                        className='w-10/12 p-2 md:p-4'
                     />
-                    <button
-                        className='w-52 rounded-r-lg bg-blue-500 p-2 text-sm text-white md:text-base'
-                        onClick={handleSearch}
-                    >
+                    <Button onClick={handleSearch} roundedSide='right' className='-ml-1 w-56 md:px-10 md:py-5'>
                         {t('header.button')}
-                    </button>
+                    </Button>
                 </div>
             </div>
             <div className='bg-stone-100 px-4 py-20'>
@@ -95,7 +95,7 @@ const SearchPage = () => {
                             <Select
                                 placeholder={t('teacherList.filter')}
                                 options={sortOptions}
-                                className='w-52'
+                                className='w-40 md:w-52'
                                 value={sorting}
                                 onChange={(selectedOption: SingleValue<OptionType>) =>
                                     handleSort(selectedOption as OptionType)
@@ -103,7 +103,6 @@ const SearchPage = () => {
                             />
                         </div>
                         <TeacherList teachers={teachers} error={error} />
-                        <div className='h-5' ref={lastElementRef}></div>
                     </div>
                 )}
             </div>

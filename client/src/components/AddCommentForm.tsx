@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import Button from './ui/Button';
 
-const formStyles =
-    'border border-zinc-300 p-4 duration-150 transform transition-all absolute w-full z-10';
+const formStyles = 'border border-zinc-300 p-4 duration-150 transform transition-all absolute w-full z-10';
 
 interface AddCommentFormProps {
     isActive: boolean;
@@ -10,15 +10,11 @@ interface AddCommentFormProps {
     onCancel: () => void;
 }
 
-const AddCommentForm = ({
-    isActive,
-    onAddComment,
-    onCancel,
-}: AddCommentFormProps) => {
+const AddCommentForm = ({ isActive, onAddComment, onCancel }: AddCommentFormProps) => {
     const { t } = useTranslation();
     const [commentData, setCommentData] = useState({ name: '', context: '' });
     const [lastCommentTime, setLastCommentTime] = useState<number | null>(
-        JSON.parse(localStorage.getItem('lastCommentTime') || 'null')
+        JSON.parse(localStorage.getItem('lastCommentTime') || 'null'),
     );
 
     const addComment = () => {
@@ -29,8 +25,8 @@ const AddCommentForm = ({
 
         const currentTime = Date.now();
 
-        if (lastCommentTime && currentTime - lastCommentTime < 2 * 60 * 1000) {
-            alert('Please wait for 2 minutes before adding another comment.');
+        if (lastCommentTime && currentTime - lastCommentTime < 30 * 1000) {
+            alert('Please wait for 30 seconds before adding another comment.');
             return;
         }
 
@@ -39,32 +35,25 @@ const AddCommentForm = ({
     };
 
     useEffect(() => {
-        localStorage.setItem(
-            'lastCommentTime',
-            JSON.stringify(lastCommentTime)
-        );
+        localStorage.setItem('lastCommentTime', JSON.stringify(lastCommentTime));
     }, [lastCommentTime]);
 
     return (
         <form
-            className={
-                isActive ? `${formStyles} scale-100` : `${formStyles} scale-0`
-            }
+            className={isActive ? `${formStyles} scale-100` : `${formStyles} scale-0`}
             onSubmit={(e) => e.preventDefault()}
         >
-            <div className="flex flex-col gap-5">
+            <div className='flex flex-col gap-5'>
                 <input
-                    type="text"
+                    type='text'
                     placeholder={t('commentForm.name')}
-                    className="border-b-2 border-blue-400 px-2 text-lg outline-none focus:border-blue-800"
+                    className='border-b-2 border-blue-400 px-2 text-lg outline-none focus:border-blue-800'
                     value={commentData.name}
-                    onChange={(e) =>
-                        setCommentData({ ...commentData, name: e.target.value })
-                    }
+                    onChange={(e) => setCommentData({ ...commentData, name: e.target.value })}
                 />
                 <textarea
                     placeholder={t('commentForm.context')}
-                    className="rounded-sm border-2 border-blue-400 px-2 py-1 text-lg outline-none focus:border-blue-800"
+                    className='rounded-sm border-2 border-blue-400 px-2 py-1 text-lg outline-none focus:border-blue-800'
                     value={commentData.context}
                     onChange={(e) =>
                         setCommentData({
@@ -74,22 +63,15 @@ const AddCommentForm = ({
                     }
                 ></textarea>
             </div>
-            <div className="my-8 border border-zinc-200"></div>
-            <div className="flex justify-end">
-                <div className="flex gap-4">
-                    <button
-                        className="rounded-md bg-red-600 px-3 py-2 text-white"
-                        onClick={onCancel}
-                    >
+            <div className='my-8 border border-zinc-200'></div>
+            <div className='flex justify-end'>
+                <div className='flex gap-4'>
+                    <Button className='bg-red-600 px-3 py-2' onClick={onCancel}>
                         {t('commentForm.cancel')}
-                    </button>
-                    <button
-                        className="rounded-md bg-blue-500 px-3 py-2 text-white"
-                        onClick={addComment}
-                        type="submit"
-                    >
+                    </Button>
+                    <Button className='px-3 py-2' onClick={addComment} type='submit'>
                         {t('commentForm.add')}
-                    </button>
+                    </Button>
                 </div>
             </div>
         </form>

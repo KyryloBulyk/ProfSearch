@@ -1,12 +1,13 @@
-import { useParams } from 'react-router-dom';
-import { useFetching } from '../hooks/useFetching';
-import { useTranslation } from 'react-i18next';
-import Comment from '../components/Comment';
 import { useEffect, useState } from 'react';
-import { Teacher } from '../types';
+import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 import api from '../api/teachers';
-import TeacherTable from '../components/TeacherTable';
 import AddCommentForm from '../components/AddCommentForm';
+import Comment from '../components/Comment';
+import TeacherTable from '../components/TeacherTable';
+import Button from '../components/ui/Button';
+import { useFetching } from '../hooks/useFetching';
+import { Teacher } from '../types';
 import { timeAgo } from '../utils';
 
 const TeacherPage = () => {
@@ -18,8 +19,7 @@ const TeacherPage = () => {
         const { data } = await api.get(`/teachers/${id}`);
         if (data.comments) {
             data.comments.sort(
-                (a: { date: string }, b: { date: string }) =>
-                    new Date(b.date).getTime() - new Date(a.date).getTime()
+                (a: { date: string }, b: { date: string }) => new Date(b.date).getTime() - new Date(a.date).getTime(),
             );
         }
         setTeacher(data);
@@ -47,62 +47,38 @@ const TeacherPage = () => {
         setIsCommentFormVisible(false);
     };
 
-    if (!teacher)
-        return (
-            <h1 className="pt-20 text-center text-3xl font-bold">
-                Teacher not found
-            </h1>
-        );
+    if (!teacher) return <h1 className='pt-20 text-center text-3xl font-bold'>Teacher not found</h1>;
     return (
-        <div className="mx-auto my-0 max-w-7xl px-2 py-24 md:px-4">
-            <div className="flex flex-col items-start gap-10 sm:flex-row">
+        <div className='mx-auto my-0 max-w-7xl px-2 py-24 md:px-4'>
+            <div className='flex flex-col items-start gap-10 sm:flex-row'>
                 {teacher.photoUrl && (
-                    <img
-                        src={teacher.photoUrl}
-                        alt={teacher.surname}
-                        className="rounded-md sm:w-full"
-                    />
+                    <img src={teacher.photoUrl} alt={teacher.surname} className='w-48 rounded sm:w-80' />
                 )}
                 <TeacherTable teacher={teacher} />
             </div>
-            <div className="mx-auto my-0 max-w-4xl pl-3 pt-10">
-                <div className="flex flex-col justify-between sm:flex-row sm:items-end">
-                    <h1 className="pt-10 text-3xl font-bold">
-                        {t('teacherPage.comments')}
-                    </h1>
+            <div className='mx-auto my-0 max-w-4xl pl-3 pt-10'>
+                <div className='flex flex-col justify-between gap-3 sm:flex-row sm:items-end'>
+                    <h1 className='order-2 pt-5 text-3xl font-bold sm:order-1 sm:pt-10'>{t('teacherPage.comments')}</h1>
                     {!isCommentFormVisible && (
-                        <button
-                            className="mt-5 rounded-md bg-blue-500 p-2 text-white sm:mt-0 md:px-3 md:py-2"
-                            onClick={showCommentForm}
-                        >
+                        <Button className='order-1 p-2 sm:order-2 md:px-3 md:py-2' onClick={showCommentForm}>
                             {t('teacherPage.comment.button')}
-                        </button>
+                        </Button>
                     )}
                 </div>
-                <div className="relative pt-8">
+                <div className='relative pt-0 sm:pt-8'>
                     <AddCommentForm
                         onCancel={hideCommentForm}
                         onAddComment={addComment}
                         isActive={isCommentFormVisible}
                     />
-                    <div
-                        className={
-                            isCommentFormVisible
-                                ? 'flex flex-col gap-5 pt-72'
-                                : 'flex flex-col gap-5 pt-8'
-                        }
-                    >
+                    <div className={isCommentFormVisible ? 'flex flex-col gap-5 pt-72' : 'flex flex-col gap-5 pt-8'}>
                         {teacher.comments &&
                             teacher.comments.map((comment) => (
                                 <Comment
                                     key={comment.commentId}
                                     content={comment.commentText}
                                     author={comment.author}
-                                    date={
-                                        comment.date
-                                            ? timeAgo(comment.date)
-                                            : ''
-                                    }
+                                    date={comment.date ? timeAgo(comment.date) : ''}
                                 />
                             ))}
                     </div>
