@@ -51,9 +51,7 @@ const TeacherPage = () => {
     return (
         <div className='mx-auto my-0 max-w-7xl px-2 py-24 md:px-4'>
             <div className='flex flex-col items-start gap-10 sm:flex-row'>
-                {teacher.photoUrl && (
-                    <img src={teacher.photoUrl} alt={teacher.surname} className='w-48 rounded sm:w-80' />
-                )}
+                {teacher.photoUrl && <img src={teacher.photoUrl} alt={teacher.surname} className='w-48 rounded' />}
                 <TeacherTable teacher={teacher} />
             </div>
             <div className='mx-auto my-0 max-w-4xl pl-3 pt-10'>
