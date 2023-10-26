@@ -3,21 +3,26 @@ import TeacherCard from './TeacherCard';
 import { Teacher } from '../types';
 
 interface TeacherListProps {
-	teachers: Teacher[];
-	error: boolean;
+    teachers: Teacher[];
+    error: boolean;
 }
 
 const TeacherList = ({ teachers, error }: TeacherListProps) => {
-	const { t } = useTranslation();
+    const { t } = useTranslation();
 
-	if (error) return <h1 className='text-2xl font-bold text-center pt-10'>{t('teacherList.errorMessage')}😞</h1>;
-	return (
-		<div className='pt-10 flex flex-col gap-4'>
-			{teachers.map((teacher: Teacher, index) => (
-				<TeacherCard key={index} {...teacher} />
-			))}
-		</div>
-	);
+    if (error)
+        return (
+            <h1 className="pt-10 text-center text-2xl font-bold">
+                {t('teacherList.errorMessage')}😞
+            </h1>
+        );
+    return (
+        <div className="flex flex-col gap-4 pt-10">
+            {teachers.map((teacher: Teacher, index) => (
+                <TeacherCard key={index} {...teacher} />
+            ))}
+        </div>
+    );
 };
 
 export default TeacherList;

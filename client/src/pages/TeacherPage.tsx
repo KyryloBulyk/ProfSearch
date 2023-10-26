@@ -10,84 +10,106 @@ import AddCommentForm from '../components/AddCommentForm';
 import { timeAgo } from '../utils';
 
 const TeacherPage = () => {
-	const { id } = useParams();
-	const { t } = useTranslation();
-	const [teacher, setTeacher] = useState<Teacher>();
-	const [isCommentFormVisible, setIsCommentFormVisible] = useState(false);
-	const { fetching } = useFetching(async () => {
-		const { data } = await api.get(`/teachers/${id}`);
-		if (data.comments) {
-			data.comments.sort(
-				(a: { date: string }, b: { date: string }) => new Date(b.date).getTime() - new Date(a.date).getTime()
-			);
-		}
-		setTeacher(data);
-	});
+    const { id } = useParams();
+    const { t } = useTranslation();
+    const [teacher, setTeacher] = useState<Teacher>();
+    const [isCommentFormVisible, setIsCommentFormVisible] = useState(false);
+    const { fetching } = useFetching(async () => {
+        const { data } = await api.get(`/teachers/${id}`);
+        if (data.comments) {
+            data.comments.sort(
+                (a: { date: string }, b: { date: string }) =>
+                    new Date(b.date).getTime() - new Date(a.date).getTime()
+            );
+        }
+        setTeacher(data);
+    });
 
-	useEffect(() => {
-		fetching();
-	}, []);
+    useEffect(() => {
+        fetching();
+    }, []);
 
-	const addComment = async (author: string, commentText: string) => {
-		await api.post(`/teachers/${id}/comments`, { author, commentText, date: new Date().toISOString() });
-		hideCommentForm();
-		fetching();
-	};
+    const addComment = async (author: string, commentText: string) => {
+        await api.post(`/teachers/${id}/comments`, {
+            author,
+            commentText,
+            date: new Date().toISOString(),
+        });
+        hideCommentForm();
+        fetching();
+    };
 
-	const showCommentForm = () => {
-		setIsCommentFormVisible(true);
-	};
+    const showCommentForm = () => {
+        setIsCommentFormVisible(true);
+    };
 
-	const hideCommentForm = () => {
-		setIsCommentFormVisible(false);
-	};
+    const hideCommentForm = () => {
+        setIsCommentFormVisible(false);
+    };
 
-	if (!teacher) return <h1 className='text-3xl text-center pt-20 font-bold'>Teacher not found</h1>;
-	return (
-		<div className='py-24 px-2 md:px-4 max-w-7xl my-0 mx-auto'>
-			<div className='flex flex-col sm:flex-row gap-10 items-start'>
-				{teacher.photoUrl && (
-					<img
-						src={teacher.photoUrl}
-						alt={teacher.surname}
-						className='sm:w-full rounded-md'
-					/>
-				)}
-				<TeacherTable teacher={teacher} />
-			</div>
-			<div className='pt-10 max-w-4xl my-0 mx-auto pl-3'>
-				<div className='flex justify-between sm:items-end flex-col sm:flex-row'>
-					<h1 className='text-3xl font-bold pt-10'>{t('teacherPage.comments')}</h1>
-					{!isCommentFormVisible && (
-						<button
-							className='bg-blue-500 text-white p-2 md:px-3 md:py-2 rounded-md mt-5 sm:mt-0'
-							onClick={showCommentForm}
-						>
-							{t('teacherPage.comment.button')}
-						</button>
-					)}
-				</div>
-				<div className='pt-8 relative'>
-					<AddCommentForm
-						onCancel={hideCommentForm}
-						onAddComment={addComment}
-						isActive={isCommentFormVisible}
-					/>
-					<div className={isCommentFormVisible ? 'pt-72 flex flex-col gap-5' : 'pt-8 flex flex-col gap-5'}>
-						{teacher.comments &&
-							teacher.comments.map((comment) => (
-								<Comment
-									key={comment.commentId}
-									content={comment.commentText}
-									author={comment.author}
-									date={comment.date ? timeAgo(comment.date) : ''}
-								/>
-							))}
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+    if (!teacher)
+        return (
+            <h1 className="pt-20 text-center text-3xl font-bold">
+                Teacher not found
+            </h1>
+        );
+    return (
+        <div className="mx-auto my-0 max-w-7xl px-2 py-24 md:px-4">
+            <div className="flex flex-col items-start gap-10 sm:flex-row">
+                {teacher.photoUrl && (
+                    <img
+                        src={teacher.photoUrl}
+                        alt={teacher.surname}
+                        className="rounded-md sm:w-full"
+                    />
+                )}
+                <TeacherTable teacher={teacher} />
+            </div>
+            <div className="mx-auto my-0 max-w-4xl pl-3 pt-10">
+                <div className="flex flex-col justify-between sm:flex-row sm:items-end">
+                    <h1 className="pt-10 text-3xl font-bold">
+                        {t('teacherPage.comments')}
+                    </h1>
+                    {!isCommentFormVisible && (
+                        <button
+                            className="mt-5 rounded-md bg-blue-500 p-2 text-white sm:mt-0 md:px-3 md:py-2"
+                            onClick={showCommentForm}
+                        >
+                            {t('teacherPage.comment.button')}
+                        </button>
+                    )}
+                </div>
+                <div className="relative pt-8">
+                    <AddCommentForm
+                        onCancel={hideCommentForm}
+                        onAddComment={addComment}
+                        isActive={isCommentFormVisible}
+                    />
+                    <div
+                        className={
+                            isCommentFormVisible
+                                ? 'flex flex-col gap-5 pt-72'
+                                : 'flex flex-col gap-5 pt-8'
+                        }
+                    >
+                        {teacher.comments &&
+                            teacher.comments.map((comment) => (
+                                <Comment
+                                    key={comment.commentId}
+                                    content={comment.commentText}
+                                    author={comment.author}
+                                    date={
+                                        comment.date
+                                            ? timeAgo(comment.date)
+                                            : ''
+                                    }
+                                />
+                            ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default TeacherPage;
