@@ -44,24 +44,23 @@ const TeacherPage = () => {
 
 	if (!teacher) return <h1 className='text-3xl text-center pt-20 font-bold'>Teacher not found</h1>;
 	return (
-		<div className='py-24 px-4 max-w-7xl my-0 mx-auto'>
-			<div className='flex flex-col md:flex-row gap-10 items-start'>
+		<div className='py-24 px-2 md:px-4 max-w-7xl my-0 mx-auto'>
+			<div className='flex flex-col sm:flex-row gap-10 items-start'>
 				{teacher.photoUrl && (
 					<img
 						src={teacher.photoUrl}
 						alt={teacher.surname}
-						className='w-full rounded-md'
+						className='sm:w-full rounded-md'
 					/>
 				)}
 				<TeacherTable teacher={teacher} />
 			</div>
-
 			<div className='pt-10 max-w-4xl my-0 mx-auto pl-3'>
-				<div className='flex justify-between items-end'>
+				<div className='flex justify-between sm:items-end flex-col sm:flex-row'>
 					<h1 className='text-3xl font-bold pt-10'>{t('teacherPage.comments')}</h1>
 					{!isCommentFormVisible && (
 						<button
-							className='bg-blue-500 text-white px-3 py-2 rounded-md'
+							className='bg-blue-500 text-white p-2 md:px-3 md:py-2 rounded-md mt-5 sm:mt-0'
 							onClick={showCommentForm}
 						>
 							{t('teacherPage.comment.button')}

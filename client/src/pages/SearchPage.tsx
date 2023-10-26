@@ -91,8 +91,8 @@ const SearchPage = () => {
 					/>
 				) : (
 					<div className='max-w-7xl my-0 mx-auto'>
-						<div className='flex justify-between'>
-							<p className='text-3xl font-bold'>
+						<div className='flex justify-between items-center'>
+							<p className=' text-xl md:text-3xl font-bold'>
 								{teachers.length} {t('teacherList.teachers')}
 							</p>
 							<Select

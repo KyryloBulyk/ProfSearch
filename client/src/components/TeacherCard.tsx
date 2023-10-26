@@ -6,7 +6,7 @@ const TeacherCard = (props: Teacher) => {
 	const { t, i18n } = useTranslation();
 
 	return (
-		<div className='flex gap-6 bg-white p-6 rounded-lg'>
+		<div className='flex gap-6 bg-white p-2 md:p-6 rounded-lg'>
 			<img
 				src={props.photoUrl ? props.photoUrl : 'https://via.placeholder.com/150'}
 				alt='avatar'
@@ -23,7 +23,7 @@ const TeacherCard = (props: Teacher) => {
 				<div className='pt-4'>
 					<Link
 						to={`/teachers/${props.teacherId}`}
-						className='bg-blue-500 text-white text-center text-sm py-1 px-5 rounded-lg'
+						className='bg-blue-500 text-white text-center text-sm py-1 px-2 rounded-lg'
 					>
 						{t('teacherCard.button')}
 					</Link>

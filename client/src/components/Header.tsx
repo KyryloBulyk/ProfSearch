@@ -9,7 +9,7 @@ const Header = () => {
 	};
 
 	return (
-		<div className='flex justify-between items-center max-w-7xl my-0 mx-auto p-4'>
+		<div className='flex justify-between items-center max-w-7xl my-0 mx-auto p-2 md:p-4'>
 			<div>
 				<Link to='/'>
 					<img
