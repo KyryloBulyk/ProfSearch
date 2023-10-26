@@ -1,45 +1,49 @@
 {
-	"header": {
-		"title": "Nájdite si vhodného učiteľa",
-		"subtitle": "Naša platforma vám pomôže nájsť správneho učiteľa na dosiahnutie vašich študijných a osobných cieľov.",
-		"inputPlaceholder": "Akého učiteľa hľadáte?",
-		"button": "Hľadať učiteľa"
-	},
-	"teacherList": {
-		"errorMessage": "Učitelia neboli nájdení",
-		"teachers": "učitelia",
-		"filter": "Filter podľa",
-		"filterValues": {
-			"alphabet": "Abecedy",
-			"rating": "Hodnotenia"
-		}
-	},
-	"teacherCard": {
-		"button": "Zobraziť viac"
-	},
-	"teacherPage": {
-		"name": "Meno",
-		"department": "Oddelenie",
-		"mail": "E-mail",
-		"contacts": "Kontakt",
-		"about": "Opis",
-		"building": "Budova",
-		"room": "Miestnosť",
-		"subjects": "Predmety",
-		"comments": "Komentáre",
-		"comment": {
-			"placeholder": "Napíšte komentár",
-			"button": "Pridať komentár"
-		}
-	},
-	"progressBar": {
-		"header": "Týždeň semestra",
-		"week": "týždeň"
-	},
-	"commentForm": {
-		"name": "Napište svoje meno",
-		"context": "Napíšte svoj komentár",
-		"add": "Pridať komentár",
-		"cancel": "Zrušiť"
-	}
+    "header": {
+        "title": {
+            "part_1": "Nájdite si vhodného",
+            "part_2": " učiteľa",
+            "part_3": ""
+        },
+        "subtitle": "Naša platforma vám pomôže nájsť správneho učiteľa na dosiahnutie vašich študijných a osobných cieľov.",
+        "inputPlaceholder": "Akého učiteľa hľadáte?",
+        "button": "Hľadať učiteľa"
+    },
+    "teacherList": {
+        "errorMessage": "Učitelia neboli nájdení",
+        "teachers": "učitelia",
+        "filter": "Filter podľa",
+        "filterValues": {
+            "alphabet": "Abecedy",
+            "rating": "Hodnotenia"
+        }
+    },
+    "teacherCard": {
+        "button": "Zobraziť viac"
+    },
+    "teacherPage": {
+        "name": "Meno",
+        "department": "Oddelenie",
+        "mail": "E-mail",
+        "contacts": "Kontakt",
+        "about": "Opis",
+        "building": "Budova",
+        "room": "Miestnosť",
+        "subjects": "Predmety",
+        "comments": "Komentáre",
+        "comment": {
+            "placeholder": "Napíšte komentár",
+            "button": "Pridať komentár"
+        }
+    },
+    "progressBar": {
+        "header": "Týždeň semestra",
+        "week": "týždeň"
+    },
+    "commentForm": {
+        "name": "Napište svoje meno",
+        "context": "Napíšte svoj komentár",
+        "add": "Pridať komentár",
+        "cancel": "Zrušiť"
+    }
 }
