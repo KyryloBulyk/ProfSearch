@@ -1,6 +1,6 @@
+import { Button } from 'profsearch-ui-kit';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Button from './ui/Button';
 
 const formStyles = 'border border-zinc-300 p-4 duration-150 transform transition-all absolute w-full z-10';
 

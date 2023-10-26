@@ -1,3 +1,4 @@
+import { Button } from 'profsearch-ui-kit';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
@@ -5,7 +6,6 @@ import api from '../api/teachers';
 import AddCommentForm from '../components/AddCommentForm';
 import Comment from '../components/Comment';
 import TeacherTable from '../components/TeacherTable';
-import Button from '../components/ui/Button';
 import { useFetching } from '../hooks/useFetching';
 import { Teacher } from '../types';
 import { timeAgo } from '../utils';

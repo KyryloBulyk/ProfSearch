@@ -1,0 +1,26 @@
+{
+    "name": "profsearch-ui-kit",
+    "version": "1.0.0",
+    "description": "",
+    "main": "./dist/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/react": "^18.2.33",
+        "tailwindcss": "^3.3.5",
+        "typescript": "^5.2.2",
+        "webpack": "^5.89.0",
+        "webpack-cli": "^5.1.4"
+    },
+    "dependencies": {
+        "react": "*",
+        "ts-loader": "^9.5.0"
+    },
+    "peerDependencies": {
+        "react": "*"
+    }
+}
