@@ -77,7 +77,11 @@ const SearchPage = () => {
                         onChange={(e) => setSearch(e.target.value)}
                         className='w-10/12 p-2 md:p-4'
                     />
-                    <Button onClick={handleSearch} roundedSide='right' className='-ml-1 w-56 md:px-10 md:py-5'>
+                    <Button
+                        onClick={handleSearch}
+                        roundedSide='right'
+                        className='-ml-1 w-56 bg-blue-500 md:px-10 md:py-5'
+                    >
                         {t('header.button')}
                     </Button>
                 </div>
