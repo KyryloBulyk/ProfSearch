@@ -84,7 +84,7 @@ const SearchPage = () => {
             </div>
             <div className='bg-stone-100 px-4 py-20'>
                 {!teachers ? (
-                    <BounceLoader color='#3575E2' className='absolute left-1/2' />
+                    <BounceLoader color='#3575E2' className='absolute left-1/2 top-1/2' />
                 ) : (
                     <div className='mx-auto my-0 max-w-7xl'>
                         <div className='flex items-center justify-between'>
