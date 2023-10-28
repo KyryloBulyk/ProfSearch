@@ -17,7 +17,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="mt-6">
-          <Button color="white" bgColor="#03c9d7" text="View More" borderRadius="10px" size="md"/>
+          <Button color="white" bgColor="#03c9d7" text="View More" borderRadius="10px" size="md" func={() => {}}/>
         </div>
       </div>
 
