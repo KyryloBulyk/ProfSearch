@@ -1,6 +1,6 @@
 {
     "name": "profsearch-ui-kit",
-    "version": "1.0.3",
+    "version": "0.7.0",
     "description": "",
     "main": "./dist/index.js",
     "scripts": {

@@ -1,4 +1,4 @@
-import 'profsearch-ui-kit/dist/index.css';
+// import 'profsearch-ui-kit/dist/index.css';
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
