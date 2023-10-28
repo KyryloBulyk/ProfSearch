@@ -1,5 +1,6 @@
 import { Button } from 'profsearch-ui-kit';
 import { useEffect, useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import api from '../api/teachers';
@@ -37,6 +38,7 @@ const TeacherPage = () => {
         });
         hideCommentForm();
         fetching();
+        toast.success('Comment added successfully!');
     };
 
     const showCommentForm = () => {
@@ -50,6 +52,7 @@ const TeacherPage = () => {
     if (!teacher) return <h1 className='pt-20 text-center text-3xl font-bold'>Teacher not found</h1>;
     return (
         <div className='mx-auto my-0 max-w-7xl px-2 py-24 md:px-4'>
+            <Toaster />
             <div className='flex flex-col items-start gap-10 sm:flex-row'>
                 {teacher.photoUrl && <img src={teacher.photoUrl} alt={teacher.surname} className='w-48 rounded' />}
                 <TeacherTable teacher={teacher} />

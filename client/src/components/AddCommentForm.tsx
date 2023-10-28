@@ -32,6 +32,7 @@ const AddCommentForm = ({ isActive, onAddComment, onCancel }: AddCommentFormProp
 
         onAddComment(commentData.name, commentData.context);
         setLastCommentTime(currentTime);
+        setCommentData({ name: '', context: '' });
     };
 
     useEffect(() => {
