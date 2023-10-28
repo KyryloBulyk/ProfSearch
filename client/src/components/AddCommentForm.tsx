@@ -23,6 +23,16 @@ const AddCommentForm = ({ isActive, onAddComment, onCancel }: AddCommentFormProp
             return;
         }
 
+        if (commentData.name.length > 50) {
+            alert('Name is too long.');
+            return;
+        }
+
+        if (commentData.context.length > 500) {
+            alert('Comment is too long.');
+            return;
+        }
+
         const currentTime = Date.now();
 
         if (lastCommentTime && currentTime - lastCommentTime < 30 * 1000) {
