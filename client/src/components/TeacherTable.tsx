@@ -8,7 +8,7 @@ interface TeacherTableProps {
 }
 
 const TeacherTable = ({ teacher }: TeacherTableProps) => {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
 
     return (
         <table className='text-left text-xl'>
@@ -65,12 +65,12 @@ const TeacherTable = ({ teacher }: TeacherTableProps) => {
                         ''
                     )}
                 </tr>
-                <tr>
+                {/* <tr>
                     <th className='pt-5 align-top'>{t('teacherPage.about')}:</th>
                     <td className='pl-5 pt-5'>
                         {i18n.language === 'uk' ? teacher.description_ukraine : teacher.decription_slovak}
                     </td>
-                </tr>
+                </tr> */}
             </tbody>
         </table>
     );
